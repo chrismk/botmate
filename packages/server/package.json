@@ -1,6 +1,6 @@
 {
 	"name": "@botmate/core",
-	"version": "1.0.0.beta.0",
+	"version": "1.0.0-beta.0",
 	"main": "dist/main.js",
 	"private": false,
 	"license": "MIT",
