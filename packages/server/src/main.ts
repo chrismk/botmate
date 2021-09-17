@@ -1,1 +1,2 @@
-console.log('hello world')
+import { BotMate } from './core/BotMate'
+new BotMate()
