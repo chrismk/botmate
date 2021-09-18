@@ -10,7 +10,6 @@ interface AppSidebarItemProps {
 	item: {
 		name: string
 		icon: IconType
-		color: string
 	}
 }
 
@@ -22,10 +21,9 @@ const AppSidebarItem: React.FC<AppSidebarItemProps> = ({ isActive, item }) => {
 			rounded='xl'
 			alignItems='center'
 			transition='all 200ms'
-			// _hover={{ textColor: item.color }}
 			cursor='pointer'
-			bg={isActive ? `${item.color}.50` : 'transparent'}
-			textColor={isActive ? `${item.color}.400` : 'gray.300'}
+			bg={isActive ? `brand.50` : 'transparent'}
+			textColor={isActive ? `brand.400` : 'gray.300'}
 		>
 			<Box fontSize={{ base: '3xl', '2xl': '3xl' }}>{item.icon}</Box>
 			<Text ml={2} d={{ base: 'none', md: 'unset' }} size='sm'>
@@ -46,17 +44,14 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 		home: {
 			name: t('common.home'),
 			icon: <HiHome />,
-			color: 'brand',
 		},
 		bots: {
 			name: t('common.bots'),
 			icon: <HiChat />,
-			color: 'orange',
 		},
 		settings: {
 			name: t('common.settings'),
 			icon: <HiCog />,
-			color: 'green',
 		},
 	}
 
