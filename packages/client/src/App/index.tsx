@@ -54,7 +54,12 @@ const App: React.FC = () => {
 											component={(props: any) => {
 												const View = view.view
 												return (
-													<motion.div>
+													<motion.div
+														initial={{ opacity: 0, y: -5 }}
+														animate={{ opacity: 1, y: 0 }}
+														exit={{ opacity: 0, y: -5 }}
+														transition={{ duration: 0.2 }}
+													>
 														<View {...props} />
 													</motion.div>
 												)
