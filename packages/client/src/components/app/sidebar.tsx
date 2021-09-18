@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 
 import { HiOutlineHome, HiOutlineChat, HiOutlineCog } from 'react-icons/hi'
 
-const AppSidebar: React.FC = () => {
+interface Props {
+	active: string
+}
+
+const AppSidebar: React.FC<Props> = ({ active }) => {
 	const { t } = useTranslation()
 
 	const SidebarItems: any = {
@@ -48,7 +52,6 @@ const AppSidebar: React.FC = () => {
 			<VStack userSelect='none' spacing={12} py={8}>
 				{itemKeys.map((key, idx) => {
 					const item = SidebarItems[key]
-					let active = idx === 1 ? 't' : 'x'
 					const activeColor = active === key ? item.color : 'gray.500'
 
 					return (

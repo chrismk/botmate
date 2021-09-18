@@ -8,12 +8,14 @@ import AppSidebar from '../components/app/sidebar'
 import Home from './views/Home'
 
 interface IViews {
+	id: string
 	path: string
 	view: React.FC
 }
 
 let Views: IViews[] = [
 	{
+		id: 'home',
 		path: '/home',
 		view: Home,
 	},
@@ -25,7 +27,7 @@ const App: React.FC = () => {
 	return (
 		<div>
 			<Flex h='100vh'>
-				<AppSidebar />
+				<AppSidebar active={location.pathname.replace('/', '')} />
 				<Box>
 					<AnimatePresence exitBeforeEnter initial={false}>
 						<Switch location={location} key={location.pathname}>
