@@ -17,6 +17,10 @@
 		"0": "stopped",
 		"1": "running"
 	},
+	"stats": {
+		"totalBots": "Total Bots",
+		"ramUsage": "RAM Usage"
+	},
 	"home": {
 		"addNewBot": "Add new bot"
 	}

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
 				<GridItem colSpan={{ base: 2 }}>
 					<Stats />
 				</GridItem>
-				<GridItem colSpan={{ base: 1, md: 2, '2xl': 1 }}>
+				<GridItem colSpan={{ base: 2, '2xl': 1 }}>
 					<AddNewBot />
 				</GridItem>
 			</SimpleGrid>
