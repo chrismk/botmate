@@ -1,4 +1,3 @@
-import { getConnection } from 'typeorm'
 import { Client } from '@realsync/server'
 import { Bot as TelegramBot } from 'grammy'
 import { Bot } from '../entity/bot'
