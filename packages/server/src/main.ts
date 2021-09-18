@@ -12,6 +12,7 @@ import { Bot } from './entity/bot'
 
 // services import
 import { allBot, newBot } from './services/bot'
+import { common } from './services/common'
 
 const { NODE_ENV, PORT, DB_URL } = env
 
@@ -29,6 +30,8 @@ createConnection({
 // services
 realsync.register('bot/new', newBot)
 realsync.register('bot/all', allBot)
+
+realsync.register('common', common)
 
 if (NODE_ENV === 'development') {
 	new BotMate()

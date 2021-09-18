@@ -4,15 +4,19 @@ import { Spinner } from '@chakra-ui/spinner'
 import { useRecoilState } from 'recoil'
 
 import realsync from 'providers/realsync'
-import { botsAtom } from 'atom'
+import { botsAtom, commonAtom } from 'atom'
 
 const Wrapper: React.FC = ({ children }) => {
 	const [loading, setLoading] = useState(true)
-	const [bots, setBots] = useRecoilState(botsAtom)
+	const [, setBots] = useRecoilState(botsAtom)
+	const [, setCommon] = useRecoilState(commonAtom)
 
 	const FetchData = async () => {
 		const allBots: any = await realsync.service('bot/all', {})
+		const common: any = await realsync.service('common', {})
+
 		setBots(allBots)
+		setCommon(common)
 
 		setLoading(false)
 	}

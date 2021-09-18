@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout'
-import { botsAtom } from 'atom'
+import { botsAtom, commonAtom } from 'atom'
 import { useTranslation } from 'react-i18next'
 import { IconType } from 'react-icons'
 import { HiChatAlt2, HiOutlineServer } from 'react-icons/hi'
@@ -15,6 +15,7 @@ interface StatItemProps {
 const Stats = () => {
 	const { t } = useTranslation()
 	const [bots] = useRecoilState(botsAtom)
+	const [common] = useRecoilState(commonAtom)
 
 	const StatItem: React.FC<StatItemProps> = ({
 		title,
@@ -57,7 +58,7 @@ const Stats = () => {
 			/>
 			<StatItem
 				title={t('stats.ramUsage')}
-				subTitle='134 MB'
+				subTitle={common.ramUsage}
 				icon={HiOutlineServer}
 				color='purple'
 			/>
