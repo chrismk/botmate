@@ -1,6 +1,8 @@
 {
 	"common": {
 		"home": "Home",
-		"modules": "Modules"
+		"modules": "Modules",
+		"bots": "Bots",
+		"settings": "Settings"
 	}
 }
