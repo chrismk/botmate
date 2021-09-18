@@ -24,7 +24,9 @@ createConnection({
 	synchronize: true,
 	logging: false,
 })
-	// .then((connection) => {})
+	.then((connection) => {
+		new BotMate()
+	})
 	.catch((error) => console.log(error))
 
 // services
@@ -34,7 +36,6 @@ realsync.register('bot/all', allBot)
 realsync.register('common', common)
 
 if (NODE_ENV === 'development') {
-	new BotMate()
 	server.listen(PORT, () => {
 		logger.info(`listening on port ${PORT}`)
 	})
