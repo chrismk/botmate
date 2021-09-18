@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryColumn, BaseEntity } from 'typeorm'
 
 @Entity()
 export class Bot extends BaseEntity {
-	@PrimaryColumn()
+	@Column({ primary: true, unique: true })
 	id: number
 
 	@Column()

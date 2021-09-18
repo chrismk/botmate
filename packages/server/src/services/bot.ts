@@ -5,7 +5,6 @@ import { Bot } from '../entity/bot'
 
 const newBot = async (client: Client, token: string) => {
 	const userBot = new TelegramBot(token)
-	const connection = await getConnection()
 	await userBot.init().then(async () => {
 		const { id, first_name } = userBot.botInfo
 
@@ -15,17 +14,15 @@ const newBot = async (client: Client, token: string) => {
 		bot.name = first_name
 		bot.token = token
 
-		await connection.manager
-			.save(bot)
-			.then(() => {
-				console.log('saved')
-			})
-			.catch((err) => {
-				console.log(err)
-			})
+		await bot.save()
 	})
 
 	return userBot.botInfo
 }
 
-export { newBot }
+const allBot = async (client: Client) => {
+	const bots = await Bot.find()
+	return bots
+}
+
+export { newBot, allBot }
