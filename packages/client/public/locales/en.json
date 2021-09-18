@@ -9,12 +9,14 @@
 		"language": "Language",
 		"botToken": "Bot Token",
 		"allBots": "All bots",
+		"color": "Color",
 		"contributors": "Contributors"
 	},
 	"info": {
 		"language": "Change your preferred language",
 		"botToken": "You can get bot token from BotFather",
-		"botAdded": "Successfully added {{name}}"
+		"botAdded": "Successfully added {{name}}",
+		"colorPicker": "Choose your desired color scheme for the website"
 	},
 	"status": {
 		"0": "stopped",
