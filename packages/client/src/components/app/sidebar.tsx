@@ -1,8 +1,8 @@
-import { Box, VStack, Heading } from '@chakra-ui/react'
+import { Box, VStack, Heading, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { FiHome, FiPackage } from 'react-icons/fi'
+import { HiOutlineHome, HiOutlineChat, HiOutlineCog } from 'react-icons/hi'
 
 const AppSidebar: React.FC = () => {
 	const { t } = useTranslation()
@@ -10,19 +10,25 @@ const AppSidebar: React.FC = () => {
 	const SidebarItems: any = {
 		home: {
 			name: t('common.home'),
-			icon: <FiHome />,
+			icon: <HiOutlineHome />,
 			color: 'brand.300',
 		},
-		modules: {
-			name: t('common.modules'),
-			icon: <FiPackage />,
+		bots: {
+			name: t('common.bots'),
+			icon: <HiOutlineChat />,
 			color: 'orange.400',
+		},
+		settings: {
+			name: t('common.settings'),
+			icon: <HiOutlineCog />,
+			color: 'green.400',
 		},
 	}
 
 	const itemKeys = Object.keys(SidebarItems)
 	return (
 		<Box
+			pos='relative'
 			w={{ base: '24', md: '36' }}
 			h='100vh'
 			shadow='lg'
@@ -63,6 +69,15 @@ const AppSidebar: React.FC = () => {
 					)
 				})}
 			</VStack>
+			<Box
+				pos='absolute'
+				bottom={4}
+				textAlign='center'
+				w='full'
+				textColor='gray.500'
+			>
+				<Text>v2.3.6</Text>
+			</Box>
 		</Box>
 	)
 }
