@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/layout'
+import { Box, Heading, Stack } from '@chakra-ui/layout'
 
 interface UICardProps {
 	title: string
@@ -10,7 +10,9 @@ const UICard: React.FC<UICardProps> = (props) => {
 	return (
 		<Box textColor='gray.500' p={4} borderWidth='1px' rounded='lg' bg='white'>
 			<Heading size='md'>{title}</Heading>
-			<Box mt={6}>{children}</Box>
+			<Stack spacing={4} mt={6}>
+				{children}
+			</Stack>
 		</Box>
 	)
 }
