@@ -22,30 +22,48 @@ const AppSidebar: React.FC = () => {
 
 	const itemKeys = Object.keys(SidebarItems)
 	return (
-		<VStack userSelect='none' spacing={12} py={8}>
-			{itemKeys.map((key, idx) => {
-				const item = SidebarItems[key]
-				let active = idx === 1 ? 't' : 'x'
-				const activeColor = active === key ? item.color : 'gray.500'
+		<Box
+			w={{ base: '24', md: '36' }}
+			h='100vh'
+			shadow='lg'
+			overflow='auto'
+			css={{
+				'&::-webkit-scrollbar': {
+					width: '0px',
+				},
+				'&::-webkit-scrollbar-track': {
+					width: '0px',
+				},
+				'&::-webkit-scrollbar-thumb': {
+					borderRadius: '0px',
+				},
+			}}
+		>
+			<VStack userSelect='none' spacing={12} py={8}>
+				{itemKeys.map((key, idx) => {
+					const item = SidebarItems[key]
+					let active = idx === 1 ? 't' : 'x'
+					const activeColor = active === key ? item.color : 'gray.500'
 
-				return (
-					<Link to={`/${key}`} key={key}>
-						<VStack
-							alignItems='center'
-							transition='color 200ms'
-							_hover={{ textColor: item.color }}
-							cursor='pointer'
-							textColor={activeColor}
-						>
-							<Box fontSize={{ base: '3xl', '2xl': '3xl' }}>{item.icon}</Box>
-							<Heading d={{ base: 'none', md: 'unset' }} size='sm'>
-								{item.name}
-							</Heading>
-						</VStack>
-					</Link>
-				)
-			})}
-		</VStack>
+					return (
+						<Link to={`/${key}`} key={key}>
+							<VStack
+								alignItems='center'
+								transition='color 200ms'
+								_hover={{ textColor: item.color }}
+								cursor='pointer'
+								textColor={activeColor}
+							>
+								<Box fontSize={{ base: '3xl', '2xl': '3xl' }}>{item.icon}</Box>
+								<Heading d={{ base: 'none', md: 'unset' }} size='sm'>
+									{item.name}
+								</Heading>
+							</VStack>
+						</Link>
+					)
+				})}
+			</VStack>
+		</Box>
 	)
 }
 

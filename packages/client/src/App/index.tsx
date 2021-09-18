@@ -6,25 +6,7 @@ const App: React.FC = () => {
 	return (
 		<div>
 			<Flex h='100vh'>
-				<Box
-					w={{ base: '24', md: '36' }}
-					h='100vh'
-					shadow='lg'
-					overflow='auto'
-					css={{
-						'&::-webkit-scrollbar': {
-							width: '0px',
-						},
-						'&::-webkit-scrollbar-track': {
-							width: '0px',
-						},
-						'&::-webkit-scrollbar-thumb': {
-							borderRadius: '0px',
-						},
-					}}
-				>
-					<AppSidebar />
-				</Box>
+				<AppSidebar />
 				<Box></Box>
 			</Flex>
 		</div>
