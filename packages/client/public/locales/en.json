@@ -6,10 +6,12 @@
 		"submit": "Submit",
 		"settings": "Settings",
 		"success": "Success",
+		"language": "Language",
 		"botToken": "Bot Token",
 		"allBots": "All bots"
 	},
 	"info": {
+		"language": "Change your preferred language",
 		"botToken": "You can get bot token from BotFather",
 		"botAdded": "Successfully added {{name}}"
 	},

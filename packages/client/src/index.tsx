@@ -9,6 +9,7 @@ import './i18n'
 import App from 'App'
 import theme from 'config/theme'
 import Wrapper from 'components/wrapper'
+import { RtlProvider } from 'providers/rtl'
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -17,7 +18,9 @@ ReactDOM.render(
 				<Suspense fallback={'Loading...'}>
 					<RecoilRoot>
 						<Wrapper>
-							<App />
+							<RtlProvider>
+								<App />
+							</RtlProvider>
 						</Wrapper>
 					</RecoilRoot>
 				</Suspense>
