@@ -1,0 +1,29 @@
+{
+	"common": {
+		"home": "الصفحة الرئيسية",
+		"modules": "الوحدات",
+		"bots": "الروبوتات",
+		"submit": "إرسال",
+		"settings": "إعدادات",
+		"success": "النجاح",
+		"language": "لغة",
+		"botToken": "بوت رمز",
+		"allBots": "كل الروبوتات"
+	},
+	"info": {
+		"language": "قم بتغيير لغتك المفضلة",
+		"botToken": "يمكنك الحصول على رمز بوت من BotFather",
+		"botAdded": "Successfully added {{name}}"
+	},
+	"status": {
+		"0": "توقفت",
+		"1": "ادارة"
+	},
+	"stats": {
+		"totalBots": "توقفت",
+		"ramUsage": "RAM إستعمال"
+	},
+	"home": {
+		"addNewBot": "اضف جديد بوت"
+	}
+}
