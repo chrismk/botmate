@@ -1,9 +1,5 @@
-import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout'
-import { botsAtom, commonAtom } from 'atom'
-import { useTranslation } from 'react-i18next'
+import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 import { IconType } from 'react-icons'
-import { HiChatAlt2, HiOutlineServer } from 'react-icons/hi'
-import { useRecoilState } from 'recoil'
 
 interface StatItemProps {
 	title: string
