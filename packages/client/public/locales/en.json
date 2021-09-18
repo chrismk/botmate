@@ -6,11 +6,16 @@
 		"submit": "Submit",
 		"settings": "Settings",
 		"success": "Success",
-		"botToken": "Bot Token"
+		"botToken": "Bot Token",
+		"allBots": "All bots"
 	},
 	"info": {
 		"botToken": "You can get bot token from BotFather",
 		"botAdded": "Successfully added {{name}}"
+	},
+	"status": {
+		"0": "stopped",
+		"1": "running"
 	},
 	"home": {
 		"addNewBot": "Add new bot"

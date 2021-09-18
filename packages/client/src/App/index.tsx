@@ -10,6 +10,8 @@ import AppHeader from 'components/app/header'
 
 // Views
 import Home from './views/Home'
+import Bots from './views/Bots'
+import BotEditor from './views/Bots/Editor'
 
 interface IViews {
 	id: string
@@ -28,19 +30,33 @@ let Views: IViews[] = [
 		path: '/home',
 		view: Home,
 	},
+	{
+		id: 'bots',
+		path: '/bots',
+		view: Bots,
+	},
+	{
+		id: 'bot-edit',
+		path: '/bots/:botId',
+		view: BotEditor,
+	},
 ]
 
 const App: React.FC = () => {
 	const location = useLocation()
 	const { t } = useTranslation()
-	const active = location.pathname.replace('/', '')
+
+	let path: any = location.pathname.match(/^\/(\w+).*/)
+	if (path && path.length > 0) {
+		path = path[1]
+	}
 
 	return (
 		<div>
 			<Flex h='100vh'>
-				<AppSidebar active={active} />
+				<AppSidebar active={path} />
 				<Box w='100%' bg='gray.50'>
-					<AppHeader title={t(`common.${active}`)} />
+					<AppHeader title={t(`common.${path}`)} />
 
 					<Box p={4}>
 						<AnimatePresence exitBeforeEnter initial={false}>
