@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import { HiHome, HiChat, HiCog, HiUsers } from 'react-icons/hi'
 import { IconType } from 'react-icons/lib'
+import { useRecoilState } from 'recoil'
+import { commonAtom } from 'atom'
 
 interface AppSidebarItemProps {
 	isActive: boolean
@@ -39,6 +41,7 @@ interface Props {
 
 const AppSidebar: React.FC<Props> = ({ active }) => {
 	const { t } = useTranslation()
+	const [common] = useRecoilState(commonAtom)
 
 	const SidebarItems: any = {
 		home: {
@@ -98,7 +101,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 				w='full'
 				textColor='gray.500'
 			>
-				<Text>v2.3.6</Text>
+				<Text>v{common.version}</Text>
 			</Box>
 		</Box>
 	)
