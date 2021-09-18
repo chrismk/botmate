@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Flex } from '@chakra-ui/react'
-import { Route, Switch, useLocation } from 'react-router'
+import { Route, Switch, Redirect, useLocation } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
@@ -18,6 +18,11 @@ interface IViews {
 }
 
 let Views: IViews[] = [
+	{
+		id: 'root',
+		path: '/',
+		view: () => <Redirect to='/home' />,
+	},
 	{
 		id: 'home',
 		path: '/home',
