@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/layout'
+import { Box, Flex, Heading, Spacer, Stack, Text } from '@chakra-ui/layout'
 import { IconType } from 'react-icons'
 
 interface UICardProps {
@@ -9,6 +9,7 @@ interface UICardSettingsProps {
 	subTitle: string
 	icon: IconType
 	color: string
+	extras?: any
 }
 
 const UICard: React.FC<UICardProps> = (props) => {
@@ -17,15 +18,17 @@ const UICard: React.FC<UICardProps> = (props) => {
 	return (
 		<Box textColor='gray.500' p={4} borderWidth='1px' rounded='lg' bg='white'>
 			<Heading size='md'>{title}</Heading>
-			<Stack spacing={4} mt={6}>
-				{children}
-			</Stack>
+			{children && (
+				<Stack spacing={4} mt={6}>
+					{children}
+				</Stack>
+			)}
 		</Box>
 	)
 }
 
 const UICardSettings: React.FC<UICardSettingsProps> = (props) => {
-	const { children, title, icon: Icon, color, subTitle } = props
+	const { children, title, icon: Icon, color, subTitle, extras } = props
 
 	return (
 		<Box textColor='gray.500' p={4} borderWidth='1px' rounded='lg' bg='white'>
@@ -44,10 +47,14 @@ const UICardSettings: React.FC<UICardSettingsProps> = (props) => {
 					<Heading size='lg'>{title}</Heading>
 					<Text>{subTitle}</Text>
 				</Box>
+				<Spacer />
+				{extras}
 			</Flex>
-			<Stack spacing={4} mt={6}>
-				{children}
-			</Stack>
+			{children && (
+				<Stack spacing={4} mt={6}>
+					{children}
+				</Stack>
+			)}
 		</Box>
 	)
 }
