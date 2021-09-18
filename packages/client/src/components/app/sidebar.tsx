@@ -59,7 +59,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 	return (
 		<Box
 			pos='relative'
-			w={{ base: '24', md: '64' }}
+			w={{ base: '24', md: '64', '2xl': '80' }}
 			h='100vh'
 			borderRightWidth='1px'
 			overflow='auto'
@@ -76,7 +76,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 			}}
 		>
 			<Stack userSelect='none' p={4} py={8}>
-				{itemKeys.map((key, idx) => {
+				{itemKeys.map((key) => {
 					const item = SidebarItems[key]
 					const isActive = active === key
 
