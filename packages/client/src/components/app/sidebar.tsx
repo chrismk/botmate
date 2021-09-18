@@ -1,8 +1,39 @@
-import { Box, VStack, Heading, Text } from '@chakra-ui/react'
+import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { HiOutlineHome, HiOutlineChat, HiOutlineCog } from 'react-icons/hi'
+import { HiHome, HiChat, HiCog } from 'react-icons/hi'
+import { IconType } from 'react-icons/lib'
+
+interface AppSidebarItemProps {
+	isActive: boolean
+	item: {
+		name: string
+		icon: IconType
+		color: string
+	}
+}
+
+const AppSidebarItem: React.FC<AppSidebarItemProps> = ({ isActive, item }) => {
+	return (
+		<Flex
+			px={2}
+			py={2}
+			rounded='xl'
+			alignItems='center'
+			transition='all 200ms'
+			// _hover={{ textColor: item.color }}
+			cursor='pointer'
+			bg={isActive ? `${item.color}.50` : 'transparent'}
+			textColor={isActive ? `${item.color}.400` : 'gray.300'}
+		>
+			<Box fontSize={{ base: '3xl', '2xl': '3xl' }}>{item.icon}</Box>
+			<Text ml={2} d={{ base: 'none', md: 'unset' }} size='sm'>
+				{item.name}
+			</Text>
+		</Flex>
+	)
+}
 
 interface Props {
 	active: string
@@ -14,18 +45,18 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 	const SidebarItems: any = {
 		home: {
 			name: t('common.home'),
-			icon: <HiOutlineHome />,
-			color: 'brand.300',
+			icon: <HiHome />,
+			color: 'brand',
 		},
 		bots: {
 			name: t('common.bots'),
-			icon: <HiOutlineChat />,
-			color: 'orange.400',
+			icon: <HiChat />,
+			color: 'orange',
 		},
 		settings: {
 			name: t('common.settings'),
-			icon: <HiOutlineCog />,
-			color: 'green.400',
+			icon: <HiCog />,
+			color: 'green',
 		},
 	}
 
@@ -33,7 +64,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 	return (
 		<Box
 			pos='relative'
-			w={{ base: '24', md: '36' }}
+			w={{ base: '24', md: '64' }}
 			h='100vh'
 			borderRightWidth='1px'
 			overflow='auto'
@@ -49,29 +80,18 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 				},
 			}}
 		>
-			<VStack userSelect='none' spacing={12} py={8}>
+			<Stack userSelect='none' p={4} py={8}>
 				{itemKeys.map((key, idx) => {
 					const item = SidebarItems[key]
-					const activeColor = active === key ? item.color : 'gray.500'
+					const isActive = active === key
 
 					return (
 						<Link to={`/${key}`} key={key}>
-							<VStack
-								alignItems='center'
-								transition='color 200ms'
-								_hover={{ textColor: item.color }}
-								cursor='pointer'
-								textColor={activeColor}
-							>
-								<Box fontSize={{ base: '3xl', '2xl': '3xl' }}>{item.icon}</Box>
-								<Heading d={{ base: 'none', md: 'unset' }} size='sm'>
-									{item.name}
-								</Heading>
-							</VStack>
+							<AppSidebarItem isActive={isActive} item={item} />
 						</Link>
 					)
 				})}
-			</VStack>
+			</Stack>
 			<Box
 				pos='absolute'
 				bottom={4}
