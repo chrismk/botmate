@@ -11,15 +11,15 @@ class BotMate extends Bots {
 	}
 
 	async setup() {
-		try {
-			const userBots = await this.fetchBots()
-			userBots.map(async (bot) => {
+		const userBots = await this.fetchBots()
+		userBots.map(async (bot) => {
+			try {
 				await bot.init()
-				console.log(bot.botInfo)
-			})
-		} catch (err: any) {
-			logger.error(err)
-		}
+				logger.info(`starting ${bot.botInfo.id}`)
+			} catch (err: any) {
+				logger.error(err)
+			}
+		})
 	}
 }
 
