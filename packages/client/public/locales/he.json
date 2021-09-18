@@ -1,0 +1,29 @@
+{
+	"common": {
+		"home": "דף הבית",
+		"modules": "מודולים",
+		"bots": "רובוטים",
+		"submit": "שלח",
+		"settings": "הגדרות",
+		"success": "הצלחה",
+		"language": "שפה",
+		"botToken": "בוט טוקן",
+		"allBots": "כל הרובוטים"
+	},
+	"info": {
+		"language": "שנה את השפה שלך",
+		"botToken": "אתה יכול לקבל את הטוקן של הבוט שלך מBotFather",
+		"botAdded": "{{name}} נוסף בהצלחה"
+	},
+	"status": {
+		"0": "מושבת",
+		"1": "רץ"
+	},
+	"stats": {
+		"totalBots": "כל הרובוטים",
+		"ramUsage": "שימוש בראם"
+	},
+	"home": {
+		"addNewBot": "הוסף בוט חדש"
+	}
+}

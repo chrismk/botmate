@@ -9,7 +9,7 @@ i18n
 	.use(LanguageDetector)
 	.use(HttpApi)
 	.init({
-		fallbackLng: ['en', 'es'],
+		fallbackLng: ['en'],
 		interpolation: {
 			escapeValue: false,
 		},

@@ -6,4 +6,8 @@ export const languages: any = {
 		name: 'Arabic',
 		rtl: true,
 	},
+	he: {
+		name: 'Hebrew',
+		rtl: true,
+	},
 }
