@@ -35,7 +35,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 			pos='relative'
 			w={{ base: '24', md: '36' }}
 			h='100vh'
-			shadow='lg'
+			borderRightWidth='1px'
 			overflow='auto'
 			css={{
 				'&::-webkit-scrollbar': {
