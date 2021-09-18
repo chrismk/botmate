@@ -25,7 +25,7 @@ const AppSidebarItem: React.FC<AppSidebarItemProps> = ({ isActive, item }) => {
 			bg={isActive ? `brand.50` : 'transparent'}
 			textColor={isActive ? `brand.400` : 'gray.300'}
 		>
-			<Box fontSize={{ base: '3xl', '2xl': 'xl' }}>{item.icon}</Box>
+			<Box fontSize={{ base: '3xl', md: '3xl' }}>{item.icon}</Box>
 			<Text ml={2} d={{ base: 'none', md: 'unset' }} size='sm'>
 				{item.name}
 			</Text>

@@ -3,6 +3,13 @@
 		"home": "Home",
 		"modules": "Modules",
 		"bots": "Bots",
-		"settings": "Settings"
+		"settings": "Settings",
+		"botToken": "Bot Token"
+	},
+	"info": {
+		"botToken": "Yuo can get bot token from BotFather"
+	},
+	"home": {
+		"addNewBot": "Add new bot"
 	}
 }
