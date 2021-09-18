@@ -7,7 +7,7 @@
 		"botToken": "Bot Token"
 	},
 	"info": {
-		"botToken": "Yuo can get bot token from BotFather"
+		"botToken": "You can get bot token from BotFather"
 	},
 	"home": {
 		"addNewBot": "Add new bot"
