@@ -9,6 +9,10 @@ const BotEditor: React.FC = (props) => {
 	const { t } = useTranslation()
 	const { state: bot } = useLocation<Bot>()
 
+	if (!bot) {
+		return <Redirect to='/home' />
+	}
+
 	return (
 		<Box>
 			<UIBreadcrumb
