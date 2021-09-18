@@ -7,8 +7,10 @@
 		"settings": "Settings",
 		"success": "Success",
 		"language": "Language",
+		"status": "Status",
 		"botToken": "Bot Token",
 		"allBots": "All bots",
+		"controls": "Controls",
 		"color": "Color",
 		"contributors": "Contributors"
 	},
@@ -16,6 +18,7 @@
 		"language": "Change your preferred language",
 		"botToken": "You can get bot token from BotFather",
 		"botAdded": "Successfully added {{name}}",
+		"botControls": "Start or stop your bot",
 		"colorPicker": "Choose your desired color scheme for the website"
 	},
 	"status": {
