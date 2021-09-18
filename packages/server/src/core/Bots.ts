@@ -1,10 +1,12 @@
-import { Bot } from 'grammy'
+import { Bot as TelegramBot } from 'grammy'
+import { Bot } from '../entity/bot'
 
-const bots: Bot[] = []
+const bots: TelegramBot[] = []
 
 class Bots {
 	async fetchBots() {
-		// todo: fetch from database
+		const dbBots = await Bot.find()
+		dbBots.forEach((bot) => bots.push(new TelegramBot(bot.token)))
 		return bots
 	}
 }
