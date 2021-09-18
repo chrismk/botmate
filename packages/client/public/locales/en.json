@@ -8,7 +8,8 @@
 		"success": "Success",
 		"language": "Language",
 		"botToken": "Bot Token",
-		"allBots": "All bots"
+		"allBots": "All bots",
+		"contributors": "Contributors"
 	},
 	"info": {
 		"language": "Change your preferred language",

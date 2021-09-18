@@ -2,7 +2,7 @@ import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { HiHome, HiChat, HiCog } from 'react-icons/hi'
+import { HiHome, HiChat, HiCog, HiUsers } from 'react-icons/hi'
 import { IconType } from 'react-icons/lib'
 
 interface AppSidebarItemProps {
@@ -48,6 +48,10 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 		bots: {
 			name: t('common.bots'),
 			icon: <HiChat />,
+		},
+		contributors: {
+			name: t('common.contributors'),
+			icon: <HiUsers />,
 		},
 		settings: {
 			name: t('common.settings'),
