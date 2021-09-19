@@ -14,7 +14,9 @@
 		"color": "Color",
 		"contributors": "Contributors",
 		"manage": "Manage",
-		"delete": "Delete"
+		"delete": "Delete",
+		"install": "Install",
+		"learnMore": "Learn more"
 	},
 	"info": {
 		"language": "Change your preferred language",
@@ -22,6 +24,12 @@
 		"botAdded": "Successfully added {{name}}",
 		"botControls": "Start or stop your bot",
 		"colorPicker": "Choose your desired color scheme for the website"
+	},
+	"module": {
+		"hello-world": {
+			"name": "Hello World",
+			"info": "This module is just for testing purpose"
+		}
 	},
 	"status": {
 		"0": "stopped",
