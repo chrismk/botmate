@@ -44,6 +44,7 @@ class BotMate extends Handler {
 						start: () => this.start(bot),
 					}
 
+					this.start(bot)
 					logger.info(`starting ${bot.botInfo.id}`)
 				} catch (err: any) {
 					logger.error(err)
