@@ -9,18 +9,22 @@ const module: BMModule = {
 }
 
 const meta: BMModuleMeta = {
-	id: 'hello-world',
+	id: 'feedback',
 	fields: {
-		message: {
-			type: 'string',
+		adminId: {
+			type: 'number',
+			useCard: false,
+		},
+		defaultReply: {
+			type: 'text',
 			useCard: false,
 		},
 	},
 }
 
-const helloWorld = {
+const feedback = {
 	module,
 	meta,
 }
 
-export default helloWorld
+export default feedback

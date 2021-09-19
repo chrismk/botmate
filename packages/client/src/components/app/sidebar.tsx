@@ -2,8 +2,10 @@ import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { HiHome, HiChat, HiCog } from 'react-icons/hi'
+import { HiHome, HiChat, HiCog, HiUsers, HiCube } from 'react-icons/hi'
 import { IconType } from 'react-icons/lib'
+import { useRecoilState } from 'recoil'
+import { commonAtom } from 'atom'
 
 interface AppSidebarItemProps {
 	isActive: boolean
@@ -25,7 +27,7 @@ const AppSidebarItem: React.FC<AppSidebarItemProps> = ({ isActive, item }) => {
 			bg={isActive ? `brand.50` : 'transparent'}
 			textColor={isActive ? `brand.400` : 'gray.300'}
 		>
-			<Box fontSize={{ base: '3xl', '2xl': 'xl' }}>{item.icon}</Box>
+			<Box fontSize={{ base: '3xl', md: '3xl' }}>{item.icon}</Box>
 			<Text ml={2} d={{ base: 'none', md: 'unset' }} size='sm'>
 				{item.name}
 			</Text>
@@ -39,6 +41,7 @@ interface Props {
 
 const AppSidebar: React.FC<Props> = ({ active }) => {
 	const { t } = useTranslation()
+	const [common] = useRecoilState(commonAtom)
 
 	const SidebarItems: any = {
 		home: {
@@ -48,6 +51,14 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 		bots: {
 			name: t('common.bots'),
 			icon: <HiChat />,
+		},
+		contributors: {
+			name: t('common.contributors'),
+			icon: <HiUsers />,
+		},
+		modules: {
+			name: t('common.modules'),
+			icon: <HiCube />,
 		},
 		settings: {
 			name: t('common.settings'),
@@ -59,7 +70,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 	return (
 		<Box
 			pos='relative'
-			w={{ base: '24', md: '64' }}
+			w={{ base: '24', md: '64', '2xl': '80' }}
 			h='100vh'
 			borderRightWidth='1px'
 			overflow='auto'
@@ -76,7 +87,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 			}}
 		>
 			<Stack userSelect='none' p={4} py={8}>
-				{itemKeys.map((key, idx) => {
+				{itemKeys.map((key) => {
 					const item = SidebarItems[key]
 					const isActive = active === key
 
@@ -94,7 +105,7 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 				w='full'
 				textColor='gray.500'
 			>
-				<Text>v2.3.6</Text>
+				<Text>v{common.version}</Text>
 			</Box>
 		</Box>
 	)

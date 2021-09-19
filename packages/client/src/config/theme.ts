@@ -1,24 +1,31 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 
-const theme = extendTheme({
+let theme = extendTheme({
 	fonts: {
 		heading: 'Inter',
 		body: 'Oxygen',
 	},
 	colors: {
 		brand: {
-			'50': '#e8ecfe',
-			'100': '#c5cefc',
-			'200': '#9daffa',
-			'300': '#6f8ff9',
-			'400': '#4575f6',
-			'500': '#125bec',
-			'600': '#0352e1',
-			'700': '#0047d3',
-			'800': '#003dc6',
-			'900': '#0029af',
+			'50': '#eaebfb',
+			'100': '#cacbf4',
+			'200': '#a7aaed',
+			'300': '#8388e6',
+			'400': '#686ce0',
+			'500': '#4f50d8',
+			'600': '#4947cd',
+			'700': '#403cc1',
+			'800': '#3931b5',
+			'900': '#2e1a9e',
 		},
 	},
 })
+
+theme = extendTheme(
+	theme,
+	withDefaultColorScheme({
+		colorScheme: 'brand',
+	})
+)
 
 export default theme

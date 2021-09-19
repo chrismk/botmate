@@ -3,6 +3,71 @@
 		"home": "Home",
 		"modules": "Modules",
 		"bots": "Bots",
-		"settings": "Settings"
+		"submit": "Submit",
+		"settings": "Settings",
+		"success": "Success",
+		"language": "Language",
+		"status": "Status",
+		"botToken": "Bot Token",
+		"allBots": "All bots",
+		"controls": "Controls",
+		"color": "Color",
+		"contributors": "Contributors",
+		"manage": "Manage",
+		"delete": "Delete",
+		"install": "Install",
+		"learnMore": "Learn more",
+		"pickBot": "Pick Bot",
+		"configure": "Configure",
+		"disable": "Disable"
+	},
+	"info": {
+		"language": "Change your preferred language",
+		"botToken": "You can get bot token from BotFather",
+		"botAdded": "Successfully added {{name}}",
+		"botControls": "Start or stop your bot",
+		"colorPicker": "Choose your desired color scheme for the website"
+	},
+	"module": {
+		"hello-world": {
+			"name": "Hello World",
+			"info": "This module is just for testing purpose",
+			"fields": {
+				"message": {
+					"name": "Message",
+					"info": "Message to send when someone sends /start command"
+				}
+			}
+		},
+		"feedback": {
+			"name": "Feedback",
+			"info": "Get feedback from your users",
+			"fields": {
+				"defaultReply": {
+					"name": "Default Reply",
+					"info": "Reply with this when you are not available",
+					"placeholder": "Your message"
+				},
+				"adminId": {
+					"name": "Enter Admin ID",
+					"info": "User wit this ID will receive feedback from user",
+					"placeholder": "Admin ID"
+				}
+			}
+		}
+	},
+	"status": {
+		"0": "stopped",
+		"1": "running"
+	},
+	"stats": {
+		"totalBots": "Total Bots",
+		"ramUsage": "RAM Usage"
+	},
+	"home": {
+		"addNewBot": "Add new bot"
+	},
+	"error": {
+		"pluginAlreadyInstalled": "Plugin is already installed"
 	}
 }
