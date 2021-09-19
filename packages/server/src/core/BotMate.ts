@@ -7,8 +7,6 @@ import logger from '../logger'
 import { Bot } from '../entity/bot'
 import { Module } from '../entity/module'
 
-import modules from '../modules'
-
 const { DB_URL } = env
 
 class BotMate extends Handler {
@@ -38,16 +36,32 @@ class BotMate extends Handler {
 			try {
 				const bot = new TelegramBot(botData.token)
 				await bot.init()
+
+				this.loadedBots[bot.botInfo.id] = {
+					status: false,
+					start: () => this.start(bot),
+					stop: () => this.stop(bot),
+				}
+
 				logger.info(`starting ${bot.botInfo.id}`)
-				this.start(bot) // todo: remove auto-start
 			} catch (err: any) {
 				logger.error(err)
 			}
 		})
 	}
 
-	findLoadedModules() {
-		return this.loadedModules
+	async findBotModule(botId: number) {
+		const botModule = await Module.find({ where: { botId } })
+		return botModule
+	}
+
+	async clientStart(botId: number) {
+		await this.loadedBots[botId].start()
+		return
+	}
+	async clientStop(botId: number) {
+		await this.loadedBots[botId].stop()
+		return
 	}
 }
 

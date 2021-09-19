@@ -12,6 +12,7 @@ interface Props {
 	info: string
 	botId: number
 	placeholder: string
+	defValue?: string
 }
 
 // const getColSpan = (type: FieldType) => {
@@ -26,7 +27,7 @@ interface Props {
 // }
 
 const ModuleField: React.FC<Props> = (props) => {
-	const { id, botId, type, placeholder, name, info } = props
+	const { id, botId, type, placeholder, name, info, defValue } = props
 	const [loading, setLoading] = useState(false)
 	const [value, setValue] = useState<any>(null)
 	let Component = null
@@ -41,6 +42,7 @@ const ModuleField: React.FC<Props> = (props) => {
 		case 'text':
 			Component = (
 				<Textarea
+					defaultValue={defValue}
 					rows={6}
 					resize='none'
 					placeholder={placeholder}
@@ -51,6 +53,7 @@ const ModuleField: React.FC<Props> = (props) => {
 		case 'string':
 			Component = (
 				<Input
+					defaultValue={defValue}
 					placeholder={placeholder}
 					onChange={(e) => setValue(e.target.value)}
 				/>
@@ -59,6 +62,7 @@ const ModuleField: React.FC<Props> = (props) => {
 		case 'number':
 			Component = (
 				<Input
+					defaultValue={defValue}
 					type='number'
 					placeholder={placeholder}
 					onChange={(e) => setValue(e.target.value)}

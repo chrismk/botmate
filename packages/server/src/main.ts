@@ -17,9 +17,15 @@ const { NODE_ENV, PORT } = env
 // services
 realsync.register('bot/new', newBot)
 realsync.register('bot/all', allBot)
-realsync.register('bot/all-modules', () => modules)
-realsync.register('bot/installed-modules', () => BotMate.findLoadedModules())
+realsync.register('bot/active', () => BotMate.loadedBots)
+realsync.register('bot/start', (client, id: number) => BotMate.clientStart(id))
+realsync.register('bot/stop', (client, id: number) => BotMate.clientStop(id))
+
+realsync.register('module/active', (client, botId: number) =>
+	BotMate.findBotModule(botId)
+)
 realsync.register('module/install', installModule)
+realsync.register('module/all', () => modules)
 realsync.register('module/save-config', saveConfig)
 
 realsync.register('common', common)

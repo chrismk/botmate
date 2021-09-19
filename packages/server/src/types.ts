@@ -25,6 +25,16 @@ export interface BMModuleMeta {
 }
 
 export interface BMModuleData {
-	module: BMModule
-	meta: BMModuleMeta
+	[id: string]: {
+		module: BMModule
+		meta: BMModuleMeta
+	}
+}
+
+export interface LoadedBots {
+	[botId: number]: {
+		status: boolean
+		start: () => void
+		stop: () => void
+	}
 }

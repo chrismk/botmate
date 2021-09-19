@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Bot } from 'atom'
-import { Box, Flex, GridItem, SimpleGrid } from '@chakra-ui/layout'
+import { Box, GridItem, SimpleGrid } from '@chakra-ui/layout'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router'
 
@@ -19,12 +19,13 @@ interface StateProps {
 			}
 		}
 	}
+	config?: any
 }
 
 const ModuleEditor: React.FC = () => {
 	const { t } = useTranslation()
 	const {
-		state: { bot, module },
+		state: { bot, module, config },
 	} = useLocation<StateProps>()
 
 	const fields = useMemo(() => module.fields, [module])
@@ -56,6 +57,7 @@ const ModuleEditor: React.FC = () => {
 								info={info}
 								placeholder={placeholder}
 								type={field.type}
+								defValue={config[key]}
 							/>
 						</GridItem>
 					)

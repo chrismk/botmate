@@ -22,22 +22,36 @@ export const commonAtom = atom({
 	default: {} as Common,
 })
 
-export type Module = {
-	meta: {
-		id: string
+export interface Module {
+	[id: string]: {
+		meta: {
+			id: string
+		}
 	}
 }
 
 export const modulesAtom = atom({
 	key: 'modules',
-	default: [] as Module[],
+	default: {} as Module,
 })
 
-interface InstalledModule {
-	[botId: number]: { id: number }[]
+export interface InstalledModule {
+	active: boolean
+	id: number
+	config: any
+	moduleId: string
 }
 
 export const installedModulesAtom = atom({
 	key: 'installedModules',
 	default: {} as InstalledModule,
+})
+
+interface ActiveBot {
+	[botId: number]: { status: boolean }[]
+}
+
+export const activeBotsAtom = atom({
+	key: 'installedModules',
+	default: {} as ActiveBot,
 })

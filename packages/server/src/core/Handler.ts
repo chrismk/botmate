@@ -1,14 +1,20 @@
 import logger from '../logger'
-import modules from '../modules'
 import { Bot as TelegramBot, Composer } from 'grammy'
 import { Bot } from '../entity/bot'
-import { BMModuleHandler, BMModuleParams, BMModuleMeta } from '../types'
+import modules from '../modules'
+import {
+	BMModuleHandler,
+	BMModuleParams,
+	BMModuleMeta,
+	LoadedBots,
+} from '../types'
+import { Module } from '../entity/module'
 
 interface LoadedModules {
 	[botId: number]: BMModuleMeta[]
 }
 
-class ModuleHandler {
+class BMModule {
 	handler: BMModuleHandler
 	params?: BMModuleParams
 
@@ -21,7 +27,7 @@ class ModuleHandler {
 class Handler {
 	private bots: Bot[] = []
 	loadedModules: LoadedModules = {}
-	loadedBots: Bot[] = []
+	loadedBots: LoadedBots = {}
 
 	async fetchBots() {
 		const dbBots = await Bot.find()
@@ -29,7 +35,7 @@ class Handler {
 		return this.bots
 	}
 
-	async loadModule(bot: TelegramBot, module: ModuleHandler) {
+	async loadModule(bot: TelegramBot, module: BMModule) {
 		const composer = new Composer()
 
 		composer.use(async (ctx, next: Function) => {
@@ -42,13 +48,22 @@ class Handler {
 
 	async start(bot: TelegramBot) {
 		const { botInfo } = bot
+
+		if (this.loadedBots[botInfo.id].status) {
+			return { error: 'already running' }
+		}
+
+		const installedModules = await Module.find({ where: { botId: botInfo.id } })
 		this.loadedModules[botInfo.id] = []
-		modules.map(({ meta, module }) => {
+
+		installedModules.map((moduele) => {
+			const module = modules[moduele.moduleId]
 			// attach modules to telegram bot
-			this.loadModule(bot, module)
-			this.loadedModules[botInfo.id].push(meta)
+			this.loadModule(bot, module.module)
+			this.loadedModules[botInfo.id].push(module.meta)
 		})
 
+		this.loadedBots[botInfo.id].status = true
 		bot.start()
 	}
 	async stop(bot: TelegramBot) {

@@ -41,9 +41,7 @@ const Modules: React.FC = () => {
 	return (
 		<Box>
 			<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
-				{modules.map(({ meta }, idx) => {
-					const { id } = meta
-
+				{Object.keys(modules).map((id, idx) => {
 					return (
 						<UICard
 							key={idx}
