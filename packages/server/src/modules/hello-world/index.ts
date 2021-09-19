@@ -1,17 +1,21 @@
-import { Composer } from 'grammy'
-import { ModuleHandler } from '../../handlers/Module'
-import ui from './ui'
+import { ModuleMeta } from '..'
+import { BMModule } from '../../types'
 
-const start = new Composer()
+const module: BMModule = {
+	handler: (composer) => {
+		composer.command('start', (ctx) => {
+			ctx.reply('working')
+		})
+	},
+}
 
-start.command('start', (ctx) => {
-	ctx.reply('start message')
-})
+const meta: ModuleMeta = {
+	id: 'hello-world',
+}
 
-const helloWorld = new ModuleHandler('hello-world', ui, (bot, config) => {
-	bot.command('start', (ctx) => {
-		ctx.reply('working')
-	})
-})
+const helloWorld = {
+	module,
+	meta,
+}
 
 export default helloWorld

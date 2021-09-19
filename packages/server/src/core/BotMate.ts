@@ -1,23 +1,28 @@
 import { createConnection } from 'typeorm'
 import { Bot as TelegramBot } from 'grammy'
-import { Bots } from './Bots'
-import logger from '../logger'
 import env from '../env'
+import { Handler } from './Handler'
+import logger from '../logger'
+
 import { Bot } from '../entity/bot'
+import { Module } from '../entity/module'
+
+import modules from '../modules'
 
 const { DB_URL } = env
 
-class BotMate extends Bots {
+class BotMate extends Handler {
 	constructor() {
 		super()
 	}
 
 	async init() {
+		// db connection
 		createConnection({
 			type: 'postgres',
 			url: DB_URL,
 			database: 'botmate',
-			entities: [Bot],
+			entities: [Bot, Module],
 			synchronize: true,
 			logging: false,
 		})
@@ -40,9 +45,9 @@ class BotMate extends Bots {
 			}
 		})
 	}
+
 	findLoadedModules() {
-		console.log('this.loadedModules', this.loadedModules)
-		return this.loadedModules
+		return modules
 	}
 }
 

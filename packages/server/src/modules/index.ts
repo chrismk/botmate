@@ -1,12 +1,16 @@
-import { ModuleHandler } from '../handlers/Module'
-
+import { BMModule } from '../types'
 import helloWorld from './hello-world'
 
-export interface BMMeta {
+export interface ModuleMeta {
 	id: string
 	examples?: string[]
 	fields?: any
 }
 
-const modules: ModuleHandler[] = [helloWorld]
+export interface Module {
+	module: BMModule
+	meta: ModuleMeta
+}
+
+const modules: Module[] = [helloWorld]
 export default modules
