@@ -15,13 +15,12 @@ const DisplayBots: React.FC = () => {
 	return (
 		<>
 			{bots.map((bot, idx) => (
-				<UICard title={bot.name}>
+				<UICard title={bot.name} key={idx}>
 					<Stack spacing={4} rounded='lg' transition='all 0.3s' pos='relative'>
 						<Text>{bot.id}</Text>
 
 						<ButtonGroup>
 							<Link
-								key={idx}
 								to={{
 									pathname: `/bots/${bot.id}`,
 									state: bot,
