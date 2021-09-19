@@ -16,7 +16,8 @@
 		"manage": "Manage",
 		"delete": "Delete",
 		"install": "Install",
-		"learnMore": "Learn more"
+		"learnMore": "Learn more",
+		"pickBot": "Pick Bot"
 	},
 	"info": {
 		"language": "Change your preferred language",
@@ -41,5 +42,8 @@
 	},
 	"home": {
 		"addNewBot": "Add new bot"
+	},
+	"error": {
+		"pluginAlreadyInstalled": "Plugin is already installed"
 	}
 }

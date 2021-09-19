@@ -6,12 +6,12 @@ export class Module extends BaseEntity {
 	id: number
 
 	@Column()
-	modId: number
+	moduleId: string
 
 	@Column()
 	botId: number
 
-	@Column({ type: 'json' })
+	@Column({ type: 'json', default: {} })
 	config: any
 
 	@Column({ default: false })

@@ -11,6 +11,11 @@ const module: BMModule = {
 
 const meta: ModuleMeta = {
 	id: 'hello-world',
+	fields: {
+		message: {
+			type: 'string',
+		},
+	},
 }
 
 const helloWorld = {

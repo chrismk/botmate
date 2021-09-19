@@ -24,7 +24,7 @@ export const commonAtom = atom({
 
 type Module = {
 	meta: {
-		id: number
+		id: string
 	}
 }
 
