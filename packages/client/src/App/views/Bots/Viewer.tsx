@@ -1,13 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
-import {
-	SimpleGrid,
-	GridItem,
-	Stack,
-	Box,
-	Heading,
-	Text,
-} from '@chakra-ui/layout'
-import { Redirect, useLocation } from 'react-router-dom'
+import { useMemo } from 'react'
+import { SimpleGrid, Stack, Heading } from '@chakra-ui/layout'
+import { Redirect, Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import { Bot, installedModulesAtom } from 'atom'
@@ -17,9 +10,9 @@ import { UICard } from 'components/ui/card'
 import { useRecoilState } from 'recoil'
 import { Button, ButtonGroup } from '@chakra-ui/button'
 
-const BotEditor: React.FC = (props) => {
+const BotViewer: React.FC = () => {
 	const { t } = useTranslation()
-	const { state: bot } = useLocation<Bot>()
+	const { state: bot, pathname } = useLocation<Bot>()
 	const [installedModules] = useRecoilState(installedModulesAtom)
 
 	const botModules = useMemo(
@@ -56,7 +49,14 @@ const BotEditor: React.FC = (props) => {
 					return (
 						<UICard title={name} key={idx} subTitle={info}>
 							<ButtonGroup size='sm'>
-								<Button>{t('common.configure')}</Button>
+								<Link
+									to={{
+										pathname: `${pathname}/${module.id}`,
+										state: { bot, module },
+									}}
+								>
+									<Button>{t('common.configure')}</Button>
+								</Link>
 								<Button colorScheme='red'>{t('common.disable')}</Button>
 							</ButtonGroup>
 						</UICard>
@@ -67,4 +67,4 @@ const BotEditor: React.FC = (props) => {
 	)
 }
 
-export default BotEditor
+export default BotViewer

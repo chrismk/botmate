@@ -22,7 +22,7 @@ export const commonAtom = atom({
 	default: {} as Common,
 })
 
-type Module = {
+export type Module = {
 	meta: {
 		id: string
 	}

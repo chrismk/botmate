@@ -13,6 +13,7 @@ const meta: BMModuleMeta = {
 	fields: {
 		message: {
 			type: 'string',
+			useCard: false,
 		},
 	},
 }

@@ -8,17 +8,18 @@ interface Step {
 
 interface UIBreadcrumbProps {
 	steps: Step[]
+	state?: any
 }
 
 const UIBreadcrumb: React.FC<UIBreadcrumbProps> = (props) => {
-	const { steps } = props
+	const { steps, state } = props
 
 	return (
 		<Breadcrumb>
 			{steps.map((step, idx) => (
 				<BreadcrumbItem key={idx}>
 					{step.link ? (
-						<Link to={step.link}>{step.name}</Link>
+						<Link to={{ pathname: step.link, state }}>{step.name}</Link>
 					) : (
 						<Text>{step.name}</Text>
 					)}

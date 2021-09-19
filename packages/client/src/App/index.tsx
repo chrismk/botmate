@@ -11,10 +11,11 @@ import AppHeader from 'components/app/header'
 // Views
 import Home from './views/Home'
 import Bots from './views/Bots'
-import BotEditor from './views/Bots/Editor'
+import BotViewer from './views/Bots/Viewer'
 import Settings from './views/Settings'
 import Contributors from './views/Contributors'
 import Modules from './views/Modules'
+import ModuleEditor from './views/Bots/ModuleEditor'
 
 interface IViews {
 	id: string
@@ -41,7 +42,12 @@ let Views: IViews[] = [
 	{
 		id: 'bot-edit',
 		path: '/bots/:botId',
-		view: BotEditor,
+		view: BotViewer,
+	},
+	{
+		id: 'module-edit',
+		path: '/bots/:botId/:modId',
+		view: ModuleEditor,
 	},
 	{
 		id: 'modules',
