@@ -14,6 +14,7 @@ import Bots from './views/Bots'
 import BotEditor from './views/Bots/Editor'
 import Settings from './views/Settings'
 import Contributors from './views/Contributors'
+import Modules from './views/Modules'
 
 interface IViews {
 	id: string
@@ -41,6 +42,11 @@ let Views: IViews[] = [
 		id: 'bot-edit',
 		path: '/bots/:botId',
 		view: BotEditor,
+	},
+	{
+		id: 'modules',
+		path: '/modules',
+		view: Modules,
 	},
 	{
 		id: 'contributors',

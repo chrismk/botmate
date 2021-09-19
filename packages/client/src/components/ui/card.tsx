@@ -11,17 +11,17 @@ import { IconType } from 'react-icons'
 
 interface UICardProps {
 	title: string
+	subTitle?: string
 	style?: BoxProps
 }
 interface UICardSettingsProps extends UICardProps {
-	subTitle: string
 	icon: IconType
 	color: string
 	extras?: any
 }
 
 const UICard: React.FC<UICardProps> = (props) => {
-	const { children, title, style = {} } = props
+	const { children, title, subTitle, style = {} } = props
 
 	return (
 		<Box
@@ -34,6 +34,11 @@ const UICard: React.FC<UICardProps> = (props) => {
 			{...style}
 		>
 			<Heading size='md'>{title}</Heading>
+			{subTitle && (
+				<Text mt={2} size='md'>
+					{subTitle}
+				</Text>
+			)}
 			{children && (
 				<Stack spacing={4} mt={6}>
 					{children}

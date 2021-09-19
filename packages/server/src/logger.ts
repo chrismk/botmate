@@ -1,18 +1,39 @@
-import winston from 'winston'
+import { createLogger, format, transports } from 'winston'
+
 const { NODE_ENV } = process.env
 
-const logger = winston.createLogger({
+const logFormatter = format.printf((info) => {
+	let { timestamp, level, stack, message } = info
+	message = stack || message
+	return `${timestamp} ${level}: ${message}`
+})
+
+const logger = createLogger({
 	level: 'info',
-	format: winston.format.simple(),
+	format: format.simple(),
 	transports: [
-		new winston.transports.File({ filename: 'bm-error.log', level: 'error' }),
+		new transports.File({
+			filename: 'logs/errors.log',
+			level: 'error',
+			format: format.combine(format.simple(), format.timestamp(), logFormatter),
+		}),
+		new transports.File({
+			filename: 'logs/botmate.log',
+			level: 'debug',
+			format: format.combine(format.simple(), format.timestamp(), logFormatter),
+		}),
 	],
 })
 
 if (NODE_ENV === 'development') {
 	logger.add(
-		new winston.transports.Console({
-			format: winston.format.simple(),
+		new transports.Console({
+			format: format.combine(
+				format.colorize(),
+				format.simple(),
+				format.timestamp(),
+				logFormatter
+			),
 		})
 	)
 }

@@ -21,3 +21,14 @@ export const commonAtom = atom({
 	key: 'common',
 	default: {} as Common,
 })
+
+type Module = {
+	meta: {
+		id: number
+	}
+}
+
+export const modulesAtom = atom({
+	key: 'modules',
+	default: [] as Module[],
+})

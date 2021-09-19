@@ -1,11 +1,21 @@
-import { BMModule } from '../../handlers/Module'
-import { BMMeta } from '..'
-import start from './start'
+import { ModuleMeta } from '..'
+import { BMModule } from '../../types'
 
-export const meta: BMMeta = {
+const module: BMModule = {
+	handler: (composer) => {
+		composer.command('start', (ctx) => {
+			ctx.reply('working')
+		})
+	},
+}
+
+const meta: ModuleMeta = {
 	id: 'hello-world',
 }
 
-const handlers: BMModule[] = [start]
+const helloWorld = {
+	module,
+	meta,
+}
 
-export default { meta, handlers }
+export default helloWorld
