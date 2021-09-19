@@ -6,10 +6,8 @@ import ListBots from 'components/bots/list-bots'
 const Bots: React.FC = () => {
 	return (
 		<Box>
-			<SimpleGrid columns={4}>
-				<GridItem colSpan={{ base: 4, md: 2, '2xl': 1 }}>
-					<ListBots />
-				</GridItem>
+			<SimpleGrid columns={4} spacing={4}>
+				<ListBots />
 			</SimpleGrid>
 		</Box>
 	)

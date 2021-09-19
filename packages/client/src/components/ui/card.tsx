@@ -16,7 +16,14 @@ const UICard: React.FC<UICardProps> = (props) => {
 	const { children, title } = props
 
 	return (
-		<Box textColor='gray.500' p={4} borderWidth='1px' rounded='lg' bg='white'>
+		<Box
+			textColor='gray.500'
+			p={4}
+			borderWidth='1px'
+			rounded='lg'
+			bg='white'
+			pos='relative'
+		>
 			<Heading size='md'>{title}</Heading>
 			{children && (
 				<Stack spacing={4} mt={6}>
