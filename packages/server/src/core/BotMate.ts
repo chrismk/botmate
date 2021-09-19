@@ -47,7 +47,7 @@ class BotMate extends Handler {
 	}
 
 	findLoadedModules() {
-		return modules
+		return this.loadedModules
 	}
 }
 

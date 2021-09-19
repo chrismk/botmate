@@ -24,4 +24,6 @@ const allBot = async (client: Client) => {
 	return bots
 }
 
-export { newBot, allBot }
+const installedModules = async (client: Client, botId: number) => {}
+
+export { newBot, allBot, installedModules }
