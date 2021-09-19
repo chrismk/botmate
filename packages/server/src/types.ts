@@ -17,3 +17,14 @@ export interface BMModule {
 	handler: BMModuleHandler
 	params?: BMModuleParams
 }
+
+export interface BMModuleMeta {
+	id: string
+	examples?: string[]
+	fields?: any
+}
+
+export interface BMModuleData {
+	module: BMModule
+	meta: BMModuleMeta
+}

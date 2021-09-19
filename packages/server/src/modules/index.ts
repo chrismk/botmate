@@ -1,16 +1,5 @@
-import { BMModule } from '../types'
+import { BMModuleData } from '../types'
 import helloWorld from './hello-world'
 
-export interface ModuleMeta {
-	id: string
-	examples?: string[]
-	fields?: any
-}
-
-export interface Module {
-	module: BMModule
-	meta: ModuleMeta
-}
-
-const modules: Module[] = [helloWorld]
+const modules: BMModuleData[] = [helloWorld]
 export default modules

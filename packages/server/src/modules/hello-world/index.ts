@@ -1,5 +1,4 @@
-import { ModuleMeta } from '..'
-import { BMModule } from '../../types'
+import { BMModule, BMModuleMeta } from '../../types'
 
 const module: BMModule = {
 	handler: (composer) => {
@@ -9,7 +8,7 @@ const module: BMModule = {
 	},
 }
 
-const meta: ModuleMeta = {
+const meta: BMModuleMeta = {
 	id: 'hello-world',
 	fields: {
 		message: {

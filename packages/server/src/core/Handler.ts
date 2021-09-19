@@ -2,10 +2,10 @@ import logger from '../logger'
 import modules from '../modules'
 import { Bot as TelegramBot, Composer } from 'grammy'
 import { Bot } from '../entity/bot'
-import { BMModuleHandler, BMModuleParams } from '../types'
+import { BMModuleHandler, BMModuleParams, BMModuleMeta } from '../types'
 
 interface LoadedModules {
-	[botId: number]: string[]
+	[botId: number]: BMModuleMeta[]
 }
 
 class ModuleHandler {
@@ -41,9 +41,12 @@ class Handler {
 	}
 
 	async start(bot: TelegramBot) {
-		modules.map(({ module }) => {
+		const { botInfo } = bot
+		this.loadedModules[botInfo.id] = []
+		modules.map(({ meta, module }) => {
 			// attach modules to telegram bot
 			this.loadModule(bot, module)
+			this.loadedModules[botInfo.id].push(meta)
 		})
 
 		bot.start()

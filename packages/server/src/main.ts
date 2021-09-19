@@ -10,13 +10,15 @@ import realsync from './realsync'
 import { allBot, newBot } from './services/bot'
 import { common } from './services/common'
 import { installModule } from './services/module'
+import modules from './modules'
 
 const { NODE_ENV, PORT } = env
 
 // services
 realsync.register('bot/new', newBot)
 realsync.register('bot/all', allBot)
-realsync.register('bot/all-modules', () => BotMate.findLoadedModules())
+realsync.register('bot/all-modules', () => modules)
+realsync.register('bot/installed-modules', () => BotMate.findLoadedModules())
 realsync.register('module/install', installModule)
 
 realsync.register('common', common)
