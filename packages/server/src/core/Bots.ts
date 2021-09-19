@@ -7,12 +7,12 @@ type Module = {
 	id: string
 	ui: string
 }
-interface LoadedModule {
+interface LoadedModules {
 	[botId: number]: Module[]
 }
 class Bots {
 	private bots: Bot[] = []
-	loadedModules: LoadedModule = {}
+	loadedModules: LoadedModules = {}
 	loadedBots: Bot[] = []
 
 	async fetchBots() {

@@ -5,13 +5,6 @@ import logger from '../logger'
 import env from '../env'
 import { Bot } from '../entity/bot'
 
-interface BotProperty {
-	id: number
-	name: string
-	start: () => void
-	stop: () => void
-}
-
 const { DB_URL } = env
 
 class BotMate extends Bots {
@@ -48,8 +41,9 @@ class BotMate extends Bots {
 		})
 	}
 	findLoadedModules() {
+		console.log('this.loadedModules', this.loadedModules)
 		return this.loadedModules
 	}
 }
 
-export { BotMate }
+export default new BotMate()
