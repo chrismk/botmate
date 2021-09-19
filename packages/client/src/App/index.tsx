@@ -76,7 +76,7 @@ const App: React.FC = () => {
 				<Box w='100%' bg='gray.50'>
 					<AppHeader title={t(`common.${path}`)} />
 
-					<Box p={{ base: 2, md: 3, lg: 4 }}>
+					<Box p={{ base: 2, md: 3, lg: 4 }} textColor='gray.500'>
 						<AnimatePresence exitBeforeEnter initial={false}>
 							<Switch location={location} key={location.pathname}>
 								{Views.map((view, idx) => {

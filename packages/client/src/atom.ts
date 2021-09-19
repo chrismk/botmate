@@ -32,3 +32,12 @@ export const modulesAtom = atom({
 	key: 'modules',
 	default: [] as Module[],
 })
+
+interface InstalledModule {
+	[botId: number]: { id: number }[]
+}
+
+export const installedModulesAtom = atom({
+	key: 'installedModules',
+	default: {} as InstalledModule,
+})

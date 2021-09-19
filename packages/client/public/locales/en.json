@@ -17,7 +17,9 @@
 		"delete": "Delete",
 		"install": "Install",
 		"learnMore": "Learn more",
-		"pickBot": "Pick Bot"
+		"pickBot": "Pick Bot",
+		"configure": "Configure",
+		"disable": "Disable"
 	},
 	"info": {
 		"language": "Change your preferred language",

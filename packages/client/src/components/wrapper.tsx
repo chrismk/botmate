@@ -4,22 +4,28 @@ import { Spinner } from '@chakra-ui/spinner'
 import { useRecoilState } from 'recoil'
 
 import realsync from 'providers/realsync'
-import { botsAtom, commonAtom, modulesAtom } from 'atom'
+import { botsAtom, commonAtom, installedModulesAtom, modulesAtom } from 'atom'
 
 const Wrapper: React.FC = ({ children }) => {
 	const [loading, setLoading] = useState(true)
 	const [, setBots] = useRecoilState(botsAtom)
 	const [, setCommon] = useRecoilState(commonAtom)
 	const [, setModules] = useRecoilState(modulesAtom)
+	const [, setInstalledModules] = useRecoilState(installedModulesAtom)
 
 	const FetchData = async () => {
 		const allBots: any = await realsync.service('bot/all', {})
 		const modules: any = await realsync.service('bot/all-modules', {})
+		const installedModules: any = await realsync.service(
+			'bot/installed-modules',
+			{}
+		)
 		const common: any = await realsync.service('common', {})
 
 		setModules(modules)
 		setBots(allBots)
 		setCommon(common)
+		setInstalledModules(installedModules)
 
 		setLoading(false)
 	}
