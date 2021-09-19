@@ -1,4 +1,4 @@
-import { Box, GridItem } from '@chakra-ui/layout'
+import { Box } from '@chakra-ui/layout'
 import { SimpleGrid } from '@chakra-ui/react'
 
 import ListBots from 'components/bots/list-bots'

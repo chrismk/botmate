@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from '@chakra-ui/layout'
+import { Stack, Text } from '@chakra-ui/layout'
 import { botsAtom } from 'atom'
 import { useRecoilState } from 'recoil'
 import { useTranslation } from 'react-i18next'
@@ -16,16 +16,7 @@ const DisplayBots: React.FC = () => {
 		<>
 			{bots.map((bot, idx) => (
 				<UICard title={bot.name}>
-					<Stack
-						spacing={4}
-						rounded='lg'
-						transition='all 0.3s'
-						_hover={{
-							textColor: 'brand.400',
-						}}
-						cursor='pointer'
-						pos='relative'
-					>
+					<Stack spacing={4} rounded='lg' transition='all 0.3s' pos='relative'>
 						<Text>{bot.id}</Text>
 
 						<ButtonGroup>
@@ -36,10 +27,10 @@ const DisplayBots: React.FC = () => {
 									state: bot,
 								}}
 							>
-								<Button size='sm'>Manage</Button>
+								<Button size='sm'>{t('common.manage')}</Button>
 							</Link>
 							<Button size='sm' colorScheme='red'>
-								Delete
+								{t('common.delete')}
 							</Button>
 						</ButtonGroup>
 					</Stack>

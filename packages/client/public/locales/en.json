@@ -12,7 +12,9 @@
 		"allBots": "All bots",
 		"controls": "Controls",
 		"color": "Color",
-		"contributors": "Contributors"
+		"contributors": "Contributors",
+		"manage": "Manage",
+		"delete": "Delete"
 	},
 	"info": {
 		"language": "Change your preferred language",
