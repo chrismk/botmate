@@ -15,7 +15,6 @@ interface StateProps {
 		fields: {
 			[key: string]: {
 				type: FieldType
-				useCard: boolean
 			}
 		}
 	}

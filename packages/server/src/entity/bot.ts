@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryColumn, BaseEntity, OneToMany } from 'typeorm'
-import { Module } from './module'
+import { Entity, Column, BaseEntity } from 'typeorm'
 
 @Entity()
 export class Bot extends BaseEntity {
@@ -14,7 +13,4 @@ export class Bot extends BaseEntity {
 
 	@Column({ default: 0 })
 	status: number
-
-	@OneToMany((type) => Module, (module) => module.id)
-	modules: Module[]
 }

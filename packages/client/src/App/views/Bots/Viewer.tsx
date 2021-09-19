@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import { SimpleGrid, Stack, Heading } from '@chakra-ui/layout'
+import { SimpleGrid, Stack, Heading, GridItem } from '@chakra-ui/layout'
 import { Redirect, Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
+import { Button, ButtonGroup } from '@chakra-ui/button'
+import { useRecoilState } from 'recoil'
 import { Bot, InstalledModule, modulesAtom } from 'atom'
+
 import BotControl from 'components/bots/controls'
 import UIBreadcrumb from 'components/ui/breadcrumb'
 import { UICard } from 'components/ui/card'
-import { Button, ButtonGroup } from '@chakra-ui/button'
 import realsync from 'providers/realsync'
-import { useRecoilState } from 'recoil'
 
 const BotViewer: React.FC = () => {
 	const { t } = useTranslation()
@@ -48,7 +48,7 @@ const BotViewer: React.FC = () => {
 				Modules
 			</Heading>
 
-			<SimpleGrid columns={{ base: 1, md: 3, '2xl': 4 }} spacing={4}>
+			<SimpleGrid columns={{ base: 1, md: 2, lg: 3, '2xl': 4 }} spacing={4}>
 				{installedModules.map((module, idx) => {
 					const name = t(`module.${module.moduleId}.name`)
 					const info = t(`module.${module.moduleId}.info`)
@@ -56,23 +56,24 @@ const BotViewer: React.FC = () => {
 					const moduleData = modules[module.moduleId]
 
 					return (
-						<UICard title={name} key={idx} subTitle={info}>
-							<ButtonGroup size='sm'>
-								<Link
-									to={{
-										pathname: `${pathname}/${module.moduleId}`,
-										state: {
-											bot,
-											module: moduleData.meta,
-											config: module.config,
-										},
-									}}
-								>
-									<Button>{t('common.configure')}</Button>
-								</Link>
-								<Button colorScheme='red'>{t('common.disable')}</Button>
-							</ButtonGroup>
-						</UICard>
+						<GridItem key={idx}>
+							<UICard title={name} subTitle={info}>
+								<ButtonGroup size='sm'>
+									<Link
+										to={{
+											pathname: `${pathname}/${module.moduleId}`,
+											state: {
+												bot,
+												module: moduleData.meta,
+												config: module.config,
+											},
+										}}
+									>
+										<Button>{t('common.configure')}</Button>
+									</Link>
+								</ButtonGroup>
+							</UICard>
+						</GridItem>
 					)
 				})}
 			</SimpleGrid>
