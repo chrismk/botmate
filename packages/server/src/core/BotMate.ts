@@ -1,5 +1,5 @@
 import { createConnection } from 'typeorm'
-import { Composer } from 'grammy'
+import { Bot as TelegramBot } from 'grammy'
 import { Bots } from './Bots'
 import logger from '../logger'
 import env from '../env'
@@ -15,8 +15,6 @@ interface BotProperty {
 const { DB_URL } = env
 
 class BotMate extends Bots {
-	bots: BotProperty[] = []
-
 	constructor() {
 		super()
 	}
@@ -38,33 +36,19 @@ class BotMate extends Bots {
 
 	async setup() {
 		const userBots = await this.fetchBots()
-		userBots.map(async (bot) => {
+		userBots.map(async (botData) => {
 			try {
+				const bot = new TelegramBot(botData.token)
 				await bot.init()
-				const { botInfo } = bot
-				logger.info(`starting ${botInfo.id}`)
-
-				const prop: BotProperty = {
-					id: botInfo.id,
-					name: botInfo.first_name,
-					start: () => {
-						bot.start()
-					},
-					stop: () => {
-						bot.stop()
-					},
-				}
-
-				this.bots.push(prop)
+				logger.info(`starting ${bot.botInfo.id}`)
+				this.start(bot) // todo: remove auto-start
 			} catch (err: any) {
 				logger.error(err)
 			}
 		})
 	}
-
-	async loadModule(id: number, moduleFunction: Composer<any>) {
-		const bot = this.bots.find((props) => props.id === id)
-		console.log('bot', bot)
+	findLoadedModules() {
+		return this.loadedModules
 	}
 }
 

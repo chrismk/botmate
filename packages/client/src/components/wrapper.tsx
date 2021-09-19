@@ -13,8 +13,10 @@ const Wrapper: React.FC = ({ children }) => {
 
 	const FetchData = async () => {
 		const allBots: any = await realsync.service('bot/all', {})
+		const modules: any = await realsync.service('bot/all-modules', {})
 		const common: any = await realsync.service('common', {})
 
+		console.log('modules', modules)
 		setBots(allBots)
 		setCommon(common)
 
