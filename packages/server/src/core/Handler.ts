@@ -7,6 +7,7 @@ import {
 	BMModuleParams,
 	BMModuleMeta,
 	LoadedBots,
+	BMContext,
 } from '../types'
 import { Module } from '../entity/module'
 
@@ -35,18 +36,20 @@ class Handler {
 		return this.bots
 	}
 
-	async loadModule(bot: TelegramBot, module: BMModule) {
-		const composer = new Composer()
+	async loadModule(bot: TelegramBot<BMContext>, module: BMModule, config: any) {
+		const composer = new Composer<BMContext>()
 
-		composer.use(async (ctx, next: Function) => {
+		composer.use(async (ctx: BMContext, next: Function) => {
+			const _module = await Module.findOne({ where: { botId: bot.botInfo.id } })
+			ctx.session.config = _module?.config
 			next()
 		})
 
-		module.handler(composer)
+		module.handler(composer, bot)
 		bot.use(composer)
 	}
 
-	async start(bot: TelegramBot) {
+	async start(bot: TelegramBot<BMContext>) {
 		const { botInfo } = bot
 
 		if (this.loadedBots[botInfo.id].status) {
@@ -56,10 +59,10 @@ class Handler {
 		const installedModules = await Module.find({ where: { botId: botInfo.id } })
 		this.loadedModules[botInfo.id] = []
 
-		installedModules.map((moduele) => {
-			const module = modules[moduele.moduleId]
+		installedModules.map((iModule) => {
+			const module = modules[iModule.moduleId]
 			// attach modules to telegram bot
-			this.loadModule(bot, module.module)
+			this.loadModule(bot, module.module, iModule.config)
 			this.loadedModules[botInfo.id].push(module.meta)
 		})
 

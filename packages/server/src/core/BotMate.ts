@@ -1,11 +1,12 @@
 import { createConnection } from 'typeorm'
-import { Bot as TelegramBot } from 'grammy'
+import { Bot as TelegramBot, session } from 'grammy'
 import env from '../env'
 import { Handler } from './Handler'
 import logger from '../logger'
 
 import { Bot } from '../entity/bot'
 import { Module } from '../entity/module'
+import { BMContext, SessionData } from '../types'
 
 const { DB_URL } = env
 
@@ -35,7 +36,16 @@ class BotMate extends Handler {
 		userBots.map(async (botData) => {
 			if (botData.status === 1)
 				try {
-					const bot = new TelegramBot(botData.token)
+					const bot = new TelegramBot<BMContext>(botData.token)
+
+					bot.use(
+						session({
+							initial(): SessionData {
+								return { config: {} }
+							},
+						})
+					)
+
 					await bot.init()
 
 					this.loadedBots[bot.botInfo.id] = {
@@ -44,6 +54,7 @@ class BotMate extends Handler {
 						start: () => this.start(bot),
 					}
 
+					this.start(bot)
 					logger.info(`starting ${bot.botInfo.id}`)
 				} catch (err: any) {
 					logger.error(err)

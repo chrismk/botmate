@@ -7,5 +7,5 @@ export default cleanEnv(process.env, {
 	PORT: port({ default: 5337 }),
 	NODE_ENV: str({ default: 'development' }),
 	DB_TYPE: str({ default: 'postgres' }),
-	DB_URL: str({ default: 'postgresql://localhost' }),
+	DB_URL: str({ default: 'postgresql://localhost/botmate' }),
 })
