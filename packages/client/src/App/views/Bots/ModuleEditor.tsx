@@ -1,8 +1,7 @@
-import { useMemo } from 'react'
 import { Bot } from 'atom'
 import { Box, GridItem, SimpleGrid } from '@chakra-ui/layout'
 import { useTranslation } from 'react-i18next'
-import { useLocation } from 'react-router'
+import { useLocation, Redirect } from 'react-router-dom'
 
 import ModuleField, { FieldType } from 'components/modules/field'
 import UIBreadcrumb from 'components/ui/breadcrumb'
@@ -24,11 +23,14 @@ interface StateProps {
 
 const ModuleEditor: React.FC = () => {
 	const { t } = useTranslation()
-	const {
-		state: { bot, module, config },
-	} = useLocation<StateProps>()
+	const { state } = useLocation<StateProps>()
 
-	const fields = useMemo(() => module.fields, [module])
+	if (!state) {
+		return <Redirect to='/home' />
+	}
+
+	const { bot, module, config } = state
+	const { fields } = module
 
 	return (
 		<Box>
