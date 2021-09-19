@@ -41,9 +41,9 @@ class Handler {
 	}
 
 	async start(bot: TelegramBot) {
-		modules.map((module) => {
+		modules.map(({ module }) => {
 			// attach modules to telegram bot
-			this.loadModule(bot, module.module)
+			this.loadModule(bot, module)
 		})
 
 		bot.start()
