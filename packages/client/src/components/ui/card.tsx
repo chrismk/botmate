@@ -1,11 +1,19 @@
-import { Box, Flex, Heading, Spacer, Stack, Text } from '@chakra-ui/layout'
+import {
+	Box,
+	BoxProps,
+	Flex,
+	Heading,
+	Spacer,
+	Stack,
+	Text,
+} from '@chakra-ui/layout'
 import { IconType } from 'react-icons'
 
 interface UICardProps {
 	title: string
+	style?: BoxProps
 }
-interface UICardSettingsProps {
-	title: string
+interface UICardSettingsProps extends UICardProps {
 	subTitle: string
 	icon: IconType
 	color: string
@@ -13,7 +21,7 @@ interface UICardSettingsProps {
 }
 
 const UICard: React.FC<UICardProps> = (props) => {
-	const { children, title } = props
+	const { children, title, style = {} } = props
 
 	return (
 		<Box
@@ -23,6 +31,7 @@ const UICard: React.FC<UICardProps> = (props) => {
 			rounded='lg'
 			bg='white'
 			pos='relative'
+			{...style}
 		>
 			<Heading size='md'>{title}</Heading>
 			{children && (
@@ -35,10 +44,25 @@ const UICard: React.FC<UICardProps> = (props) => {
 }
 
 const UICardSettings: React.FC<UICardSettingsProps> = (props) => {
-	const { children, title, icon: Icon, color, subTitle, extras } = props
+	const {
+		children,
+		title,
+		icon: Icon,
+		color,
+		subTitle,
+		extras,
+		style = {},
+	} = props
 
 	return (
-		<Box textColor='gray.500' p={4} borderWidth='1px' rounded='lg' bg='white'>
+		<Box
+			textColor='gray.500'
+			p={4}
+			borderWidth='1px'
+			rounded='lg'
+			bg='white'
+			{...style}
+		>
 			<Flex alignItems='center'>
 				<Box
 					p={3}
