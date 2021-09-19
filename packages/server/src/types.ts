@@ -1,9 +1,14 @@
-import { Bot, Composer } from 'grammy'
+import { Bot, Composer, Context, SessionFlavor } from 'grammy'
+
+export interface SessionData {
+	config: any
+}
+
+export type BMContext = Context & SessionFlavor<SessionData>
 
 export type BMModuleHandler = (
 	composer: Composer<any>,
-	bot?: Bot,
-	config?: any
+	bot: Bot<BMContext>
 ) => void
 
 type Scope = 'all' | 'private' | 'group'
@@ -34,7 +39,7 @@ export interface BMModuleData {
 export interface LoadedBots {
 	[botId: number]: {
 		status: boolean
-		bot: Bot
+		bot: Bot<BMContext>
 		start: () => void
 	}
 }

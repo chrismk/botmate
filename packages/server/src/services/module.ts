@@ -25,6 +25,7 @@ const saveConfig = async (
 	configProperty: string,
 	botId: number
 ) => {
+	console.log('value', value)
 	const module = await Module.findOne({ where: { botId } })
 	if (module) {
 		const { config } = module
