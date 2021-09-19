@@ -38,6 +38,22 @@
 					"info": "Message to send when someone sends /start command"
 				}
 			}
+		},
+		"feedback": {
+			"name": "Feedback",
+			"info": "Get feedback from your users",
+			"fields": {
+				"defaultReply": {
+					"name": "Default Reply",
+					"info": "Reply with this when you are not available",
+					"placeholder": "Your message"
+				},
+				"adminId": {
+					"name": "Enter Admin ID",
+					"info": "User wit this ID will receive feedback from user",
+					"placeholder": "Admin ID"
+				}
+			}
 		}
 	},
 	"status": {

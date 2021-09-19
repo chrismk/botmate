@@ -1,4 +1,5 @@
 import { Client } from '@realsync/server'
+import { Bot } from '../entity/bot'
 import { Module } from '../entity/module'
 
 const installModule = async (client: Client, params: any) => {
@@ -18,4 +19,18 @@ const installModule = async (client: Client, params: any) => {
 	return true
 }
 
-export { installModule }
+const saveConfig = async (
+	client: Client,
+	value: string,
+	configProperty: string,
+	botId: number
+) => {
+	const module = await Module.findOne({ where: { botId } })
+	if (module) {
+		const { config } = module
+		config[configProperty] = value
+		await Module.update({ botId }, { config: config })
+	}
+}
+
+export { installModule, saveConfig }

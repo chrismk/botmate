@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Bot } from 'atom'
-import { Box, SimpleGrid } from '@chakra-ui/layout'
+import { Box, Flex, GridItem, SimpleGrid } from '@chakra-ui/layout'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router'
 
@@ -45,15 +45,19 @@ const ModuleEditor: React.FC = () => {
 					const field = fields[key]
 					const name = t(`module.${module.id}.fields.${key}.name`)
 					const info = t(`module.${module.id}.fields.${key}.info`)
+					const placeholder = t(`module.${module.id}.fields.${key}.placeholder`)
 
 					return (
-						<ModuleField
-							key={idx}
-							name={name}
-							info={info}
-							placeholder={key}
-							type={field.type}
-						/>
+						<GridItem key={idx}>
+							<ModuleField
+								id={key}
+								botId={bot.id}
+								name={name}
+								info={info}
+								placeholder={placeholder}
+								type={field.type}
+							/>
+						</GridItem>
 					)
 				})}
 			</SimpleGrid>

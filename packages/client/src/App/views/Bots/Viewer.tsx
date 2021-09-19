@@ -41,7 +41,7 @@ const BotViewer: React.FC = () => {
 				Modules
 			</Heading>
 
-			<SimpleGrid columns={{ base: 1, md: 3, '2xl': 4 }}>
+			<SimpleGrid columns={{ base: 1, md: 3, '2xl': 4 }} spacing={4}>
 				{botModules.map((module, idx) => {
 					const name = t(`module.${module.id}.name`)
 					const info = t(`module.${module.id}.info`)
