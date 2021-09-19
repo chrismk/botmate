@@ -4,13 +4,7 @@ import { Spinner } from '@chakra-ui/spinner'
 import { useRecoilState } from 'recoil'
 
 import realsync from 'providers/realsync'
-import {
-	activeBotsAtom,
-	botsAtom,
-	commonAtom,
-	installedModulesAtom,
-	modulesAtom,
-} from 'atom'
+import { activeBotsAtom, botsAtom, commonAtom, modulesAtom } from 'atom'
 
 const Wrapper: React.FC = ({ children }) => {
 	const [loading, setLoading] = useState(true)
