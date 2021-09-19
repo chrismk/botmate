@@ -66,8 +66,5 @@ class Handler {
 		this.loadedBots[botInfo.id].status = true
 		bot.start()
 	}
-	async stop(bot: TelegramBot) {
-		logger.log('bot', `stopping ${bot.botInfo.id}`)
-	}
 }
 export { Handler }

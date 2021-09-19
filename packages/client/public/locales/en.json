@@ -19,7 +19,9 @@
 		"learnMore": "Learn more",
 		"pickBot": "Pick Bot",
 		"configure": "Configure",
-		"disable": "Disable"
+		"disable": "Disable",
+		"start": "Start",
+		"stop": "Stop"
 	},
 	"info": {
 		"language": "Change your preferred language",

@@ -34,7 +34,7 @@ export interface BMModuleData {
 export interface LoadedBots {
 	[botId: number]: {
 		status: boolean
+		bot: Bot
 		start: () => void
-		stop: () => void
 	}
 }

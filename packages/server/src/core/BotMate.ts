@@ -33,20 +33,21 @@ class BotMate extends Handler {
 	async setup() {
 		const userBots = await this.fetchBots()
 		userBots.map(async (botData) => {
-			try {
-				const bot = new TelegramBot(botData.token)
-				await bot.init()
+			if (botData.status === 1)
+				try {
+					const bot = new TelegramBot(botData.token)
+					await bot.init()
 
-				this.loadedBots[bot.botInfo.id] = {
-					status: false,
-					start: () => this.start(bot),
-					stop: () => this.stop(bot),
+					this.loadedBots[bot.botInfo.id] = {
+						status: false,
+						bot: bot,
+						start: () => this.start(bot),
+					}
+
+					logger.info(`starting ${bot.botInfo.id}`)
+				} catch (err: any) {
+					logger.error(err)
 				}
-
-				logger.info(`starting ${bot.botInfo.id}`)
-			} catch (err: any) {
-				logger.error(err)
-			}
 		})
 	}
 
@@ -56,11 +57,13 @@ class BotMate extends Handler {
 	}
 
 	async clientStart(botId: number) {
-		await this.loadedBots[botId].start()
+		await Bot.update({ id: botId }, { status: 1 })
+		this.loadedBots[botId].start()
 		return
 	}
 	async clientStop(botId: number) {
-		await this.loadedBots[botId].stop()
+		await this.loadedBots[botId].bot.stop()
+		await Bot.update({ id: botId }, { status: 0 })
 		return
 	}
 }
