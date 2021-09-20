@@ -1,7 +1,7 @@
 import { Bot } from 'atom'
 import { Box, GridItem, SimpleGrid } from '@chakra-ui/layout'
 import { useTranslation } from 'react-i18next'
-import { useLocation, Redirect } from 'react-router-dom'
+import { useLocation, Redirect, useHistory } from 'react-router-dom'
 
 import ModuleField, { FieldType } from 'components/modules/field'
 import UIBreadcrumb from 'components/ui/breadcrumb'
@@ -25,6 +25,7 @@ interface StateProps {
 
 const ModuleEditor: React.FC = () => {
 	const { t } = useTranslation()
+	const { goBack } = useHistory()
 	const { state } = useLocation<StateProps>()
 	const [loading, setLoading] = useState(false)
 
@@ -79,7 +80,7 @@ const ModuleEditor: React.FC = () => {
 								botId: bot.id,
 							})
 							setLoading(false)
-							window.location.href = '/home'
+							goBack()
 						}}
 					>
 						Uninstall
