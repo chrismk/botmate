@@ -15,11 +15,11 @@ class BotMate extends Handler {
 		super()
 	}
 
-	async init() {
+	async init(dbUrl?: string) {
 		// db connection
 		createConnection({
 			type: 'postgres',
-			url: DB_URL,
+			url: dbUrl || DB_URL,
 			database: 'botmate',
 			entities: [Bot, Module],
 			synchronize: true,
