@@ -1,4 +1,5 @@
 import { InlineKeyboard } from 'grammy'
+import logger from '../../logger'
 import { BMContext, BMModule, BMModuleMeta } from '../../types'
 
 const module: BMModule = {
@@ -6,11 +7,16 @@ const module: BMModule = {
 		composer.on(':new_chat_members', (ctx: BMContext) => {
 			const { buttons } = ctx.session.config
 			const { message = 'Welcome' } = ctx.session.config
-			ctx.reply(message, {
-				reply_markup: {
-					inline_keyboard: buttons,
-				},
-			})
+			try {
+				ctx.reply(message, {
+					reply_markup: {
+						inline_keyboard: buttons,
+					},
+				})
+			} catch (e) {
+				ctx.reply(message)
+				logger.error(e)
+			}
 		})
 	},
 	params: {
