@@ -1,10 +1,11 @@
 import { BMModuleData } from '../types'
+
 import feedback from './feedback'
-import helloWorld from './hello-world'
+import welcome from './welcome'
 
 const modules: BMModuleData = {
-	[helloWorld.meta.id]: helloWorld,
-	[feedback.meta.id]: feedback,
+	feedback: feedback,
+	welcome: welcome,
 }
 
 export default modules

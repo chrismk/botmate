@@ -7,6 +7,7 @@ export type FieldType = 'text' | 'string' | 'number'
 
 interface Props {
 	id: string
+	module: string
 	type: FieldType
 	name: string
 	info: string
@@ -27,14 +28,14 @@ interface Props {
 // }
 
 const ModuleField: React.FC<Props> = (props) => {
-	const { id, botId, type, placeholder, name, info, defValue } = props
+	const { id, botId, type, placeholder, name, info, defValue, module } = props
 	const [loading, setLoading] = useState(false)
 	const [value, setValue] = useState<any>(null)
 	let Component = null
 
 	const SaveValue = async () => {
 		setLoading(true)
-		await realsync.service(`module/save-config`, [value, id, botId])
+		await realsync.service(`module/save-config`, [value, id, botId, module])
 		setLoading(false)
 	}
 

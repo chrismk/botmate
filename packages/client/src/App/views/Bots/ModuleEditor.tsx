@@ -5,6 +5,9 @@ import { useLocation, Redirect } from 'react-router-dom'
 
 import ModuleField, { FieldType } from 'components/modules/field'
 import UIBreadcrumb from 'components/ui/breadcrumb'
+import { Button } from '@chakra-ui/button'
+import realsync from 'providers/realsync'
+import { useState } from 'react'
 
 interface StateProps {
 	bot: Bot
@@ -23,6 +26,7 @@ interface StateProps {
 const ModuleEditor: React.FC = () => {
 	const { t } = useTranslation()
 	const { state } = useLocation<StateProps>()
+	const [loading, setLoading] = useState(false)
 
 	if (!state) {
 		return <Redirect to='/home' />
@@ -53,6 +57,7 @@ const ModuleEditor: React.FC = () => {
 						<GridItem key={idx}>
 							<ModuleField
 								id={key}
+								module={module.id}
 								botId={bot.id}
 								name={name}
 								info={info}
@@ -63,6 +68,23 @@ const ModuleEditor: React.FC = () => {
 						</GridItem>
 					)
 				})}
+				<GridItem>
+					<Button
+						isLoading={loading}
+						colorScheme='red'
+						onClick={async () => {
+							setLoading(true)
+							await realsync.service('module/remove', {
+								moduleId: module.id,
+								botId: bot.id,
+							})
+							setLoading(false)
+							window.location.href = '/home'
+						}}
+					>
+						Uninstall
+					</Button>
+				</GridItem>
 			</SimpleGrid>
 		</Box>
 	)

@@ -36,27 +36,34 @@ class Handler {
 		return this.bots
 	}
 
-	async loadModule(bot: TelegramBot<BMContext>, module: BMModule) {
+	async loadModule(
+		bot: TelegramBot<BMContext>,
+		module: BMModule,
+		moduleId: string
+	) {
 		const composer = new Composer<BMContext>()
-
 		composer.use(async (ctx: BMContext, next: Function) => {
 			if (!ctx.from?.id || !ctx.chat?.id) {
 				return
 			}
 
-			const _module = await Module.findOne({ where: { botId: bot.botInfo.id } })
+			const _module = await Module.findOne({
+				where: { botId: bot.botInfo.id, moduleId },
+			})
 			ctx.session.config = _module?.config
 
 			const { params } = module
 			const scope = params?.scope || ['all']
 
-			if (ctx.chat.id === ctx.from.id) {
-				if (!scope.includes('private')) {
-					return
-				}
-			} else {
-				if (!scope.includes('group') || !scope.includes('all')) {
-					return
+			if (!scope.includes('all')) {
+				if (ctx.chat.id === ctx.from.id) {
+					if (!scope.includes('private')) {
+						return
+					}
+				} else {
+					if (!scope.includes('group')) {
+						return
+					}
 				}
 			}
 
@@ -79,8 +86,9 @@ class Handler {
 
 		installedModules.map((iModule) => {
 			const module = modules[iModule.moduleId]
+			if (!module) return
 			// attach modules to telegram bot
-			this.loadModule(bot, module.module)
+			this.loadModule(bot, module.module, module.meta.id)
 			this.loadedModules[botInfo.id].push(module.meta)
 		})
 

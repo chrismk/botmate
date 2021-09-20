@@ -31,16 +31,6 @@
 		"colorPicker": "Choose your desired color scheme for the website"
 	},
 	"module": {
-		"hello-world": {
-			"name": "Hello World",
-			"info": "This module is just for testing purpose",
-			"fields": {
-				"message": {
-					"name": "Message",
-					"info": "Message to send when someone sends /start command"
-				}
-			}
-		},
 		"feedback": {
 			"name": "Feedback",
 			"info": "Get feedback from your users",
@@ -54,6 +44,17 @@
 					"name": "Enter Admin ID",
 					"info": "User wit this ID will receive feedback from user",
 					"placeholder": "Admin ID"
+				}
+			}
+		},
+		"welcome": {
+			"name": "Welcome",
+			"info": "Bot will send welcome message to newly joined user",
+			"fields": {
+				"message": {
+					"name": "Welcome Message",
+					"info": "This message will be sent in the group for new user",
+					"placeholder": "Welcome message"
 				}
 			}
 		}
