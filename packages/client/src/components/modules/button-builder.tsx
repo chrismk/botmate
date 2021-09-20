@@ -18,7 +18,7 @@ interface Props {
 }
 
 const ButtonBuilder: React.FC<Props> = (props) => {
-	const buttonName = useRef<HTMLInputElement>(null)
+	const buttonText = useRef<HTMLInputElement>(null)
 	const buttonUrl = useRef<HTMLInputElement>(null)
 
 	const [newColModal, setNewColModal] = useState({
@@ -37,7 +37,7 @@ const ButtonBuilder: React.FC<Props> = (props) => {
 							{cols.map((col, cidx) => {
 								return (
 									<Button mr={2} size='xs' colorScheme='gray' key={cidx}>
-										{col.name}
+										{col.text}
 									</Button>
 								)
 							})}
@@ -73,7 +73,7 @@ const ButtonBuilder: React.FC<Props> = (props) => {
 					<ModalCloseButton />
 					<ModalBody>
 						<Stack>
-							<Input placeholder='Button Name' ref={buttonName} autoFocus />
+							<Input placeholder='Button Name' ref={buttonText} autoFocus />
 							<Input placeholder='Button URL' ref={buttonUrl} />
 						</Stack>
 					</ModalBody>
@@ -81,10 +81,10 @@ const ButtonBuilder: React.FC<Props> = (props) => {
 					<ModalFooter>
 						<Button
 							onClick={() => {
-								const btnName = buttonName.current?.value
+								const btnName = buttonText.current?.value
 								const btnUrl = buttonUrl.current?.value
 								const _rows = rows
-								_rows[newColModal.row].push({ name: btnName, url: btnUrl })
+								_rows[newColModal.row].push({ text: btnName, url: btnUrl })
 								setRows(_rows)
 								setNewColModal({ ...newColModal, visible: false })
 								props.onChange(_rows)
