@@ -1,4 +1,3 @@
-import { InlineKeyboard } from 'grammy'
 import logger from '../../logger'
 import { BMContext, BMModule, BMModuleMeta } from '../../types'
 
