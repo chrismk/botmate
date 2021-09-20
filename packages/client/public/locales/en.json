@@ -55,6 +55,14 @@
 					"name": "Welcome Message",
 					"info": "This message will be sent in the group for new user",
 					"placeholder": "Welcome message"
+				},
+				"buttons": {
+					"name": "Buttons",
+					"info": "These buttons will be displayed as keyboard for user to navigate"
+				},
+				"hv": {
+					"name": "Human Verification",
+					"info": "User won't be able to enter group unless they solve captcha"
 				}
 			}
 		}

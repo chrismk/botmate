@@ -18,6 +18,12 @@ const meta: BMModuleMeta = {
 		message: {
 			type: 'text',
 		},
+		buttons: {
+			type: 'button',
+		},
+		hv: {
+			type: 'switch',
+		},
 	},
 }
 

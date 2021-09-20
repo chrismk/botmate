@@ -13,15 +13,15 @@ interface UICardProps {
 	title: string
 	subTitle?: string
 	style?: BoxProps
+	extras?: any
 }
 interface UICardSettingsProps extends UICardProps {
 	icon: IconType
 	color: string
-	extras?: any
 }
 
 const UICard: React.FC<UICardProps> = (props) => {
-	const { children, title, subTitle, style = {} } = props
+	const { children, title, subTitle, style = {}, extras } = props
 
 	return (
 		<Box
@@ -33,12 +33,18 @@ const UICard: React.FC<UICardProps> = (props) => {
 			pos='relative'
 			{...style}
 		>
-			<Heading size='md'>{title}</Heading>
-			{subTitle && (
-				<Text mt={2} size='md'>
-					{subTitle}
-				</Text>
-			)}
+			<Flex>
+				<Box>
+					<Heading size='md'>{title}</Heading>
+					{subTitle && (
+						<Text mt={2} size='md'>
+							{subTitle}
+						</Text>
+					)}
+				</Box>
+				<Spacer />
+				{extras}
+			</Flex>
 			{children && (
 				<Stack spacing={4} mt={6}>
 					{children}
