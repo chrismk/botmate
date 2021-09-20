@@ -25,17 +25,15 @@ const logger = createLogger({
 	],
 })
 
-if (NODE_ENV === 'development') {
-	logger.add(
-		new transports.Console({
-			format: format.combine(
-				format.colorize(),
-				format.simple(),
-				format.timestamp(),
-				logFormatter
-			),
-		})
-	)
-}
+logger.add(
+	new transports.Console({
+		format: format.combine(
+			format.colorize(),
+			format.simple(),
+			format.timestamp(),
+			logFormatter
+		),
+	})
+)
 
 export default logger
