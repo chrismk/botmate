@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.4](https://github.com/botmate/botmate/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2021-09-20)
+
+
+### 🐛 Bug Fixes
+
+* **react:** use window hostname in production ([7a25ad5](https://github.com/botmate/botmate/commit/7a25ad599b11c382d7dc4373ad29094a7da5296e))
+
 ## [1.0.0-beta.3](https://github.com/botmate/botmate/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2021-09-20)
 
 
