@@ -6,6 +6,7 @@ const module: BMModule = {
 			const { config } = ctx.session
 
 			const isAdmin = ctx.from?.id === Number(config.adminId)
+
 			if (ctx.from && ctx.message && ctx.chat)
 				if (!isAdmin) {
 					bot.api.forwardMessage(
@@ -32,9 +33,14 @@ const module: BMModule = {
 								reply_to_message_id: Number(msgId),
 							})
 						}
+					} else {
+						ctx.reply('😄')
 					}
 				}
 		})
+	},
+	params: {
+		scope: ['private'],
 	},
 }
 
