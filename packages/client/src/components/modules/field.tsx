@@ -1,12 +1,14 @@
-import { Button, ButtonGroup, Input, Textarea } from '@chakra-ui/react'
+import { Button, ButtonGroup, Input, Textarea, Switch } from '@chakra-ui/react'
 import { UICard } from 'components/ui/card'
 import realsync from 'providers/realsync'
 import { useState } from 'react'
+import ButtonBuilder from './button-builder'
 
-export type FieldType = 'text' | 'string' | 'number'
+export type FieldType = 'text' | 'string' | 'number' | 'switch' | 'button'
 
 interface Props {
 	id: string
+	module: string
 	type: FieldType
 	name: string
 	info: string
@@ -27,14 +29,15 @@ interface Props {
 // }
 
 const ModuleField: React.FC<Props> = (props) => {
-	const { id, botId, type, placeholder, name, info, defValue } = props
+	const { id, botId, type, placeholder, name, info, defValue, module } = props
 	const [loading, setLoading] = useState(false)
 	const [value, setValue] = useState<any>(null)
-	let Component = null
+	let Component = null,
+		Extras = null
 
 	const SaveValue = async () => {
 		setLoading(true)
-		await realsync.service(`module/save-config`, [value, id, botId])
+		await realsync.service(`module/save-config`, [value, id, botId, module])
 		setLoading(false)
 	}
 
@@ -69,18 +72,33 @@ const ModuleField: React.FC<Props> = (props) => {
 				/>
 			)
 			break
+		case 'switch':
+			Extras = <Switch />
+			break
+		case 'button':
+			Component = (
+				<ButtonBuilder
+					defValue={defValue}
+					onChange={(button) => {
+						setValue(button)
+					}}
+				/>
+			)
+			break
 		default:
 			Component = null
 	}
 
 	return (
-		<UICard title={name} subTitle={info}>
+		<UICard title={name} subTitle={info} extras={Extras}>
 			{Component}
-			<ButtonGroup size='sm'>
-				<Button isLoading={loading} onClick={SaveValue}>
-					Save
-				</Button>
-			</ButtonGroup>
+			{!Extras && (
+				<ButtonGroup size='sm'>
+					<Button isLoading={loading} onClick={SaveValue}>
+						Save
+					</Button>
+				</ButtonGroup>
+			)}
 		</UICard>
 	)
 }

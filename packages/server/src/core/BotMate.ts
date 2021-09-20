@@ -67,6 +67,11 @@ class BotMate extends Handler {
 		return botModule
 	}
 
+	async restart(botId: number) {
+		await this.clientStop(botId)
+		await this.clientStart(botId)
+	}
+
 	async clientStart(botId: number) {
 		await Bot.update({ id: botId }, { status: 1 })
 		this.loadedBots[botId].start()

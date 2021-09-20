@@ -54,6 +54,9 @@ const BotViewer: React.FC = () => {
 					const info = t(`module.${module.moduleId}.info`)
 
 					const moduleData = modules[module.moduleId]
+					if (!moduleData) {
+						return null
+					}
 
 					return (
 						<GridItem key={idx}>

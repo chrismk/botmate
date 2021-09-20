@@ -5,7 +5,7 @@ dotenv.config()
 
 export default cleanEnv(process.env, {
 	PORT: port({ default: 5337 }),
-	NODE_ENV: str({ default: 'development' }),
+	NODE_ENV: str({ default: 'production' }),
 	DB_TYPE: str({ default: 'postgres' }),
 	DB_URL: str({ default: 'postgresql://localhost/botmate' }),
 })

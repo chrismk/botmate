@@ -1,4 +1,5 @@
 import { Client } from '@realsync/server'
+import BotMate from '../core/BotMate'
 import { Bot } from '../entity/bot'
 import { Module } from '../entity/module'
 
@@ -19,14 +20,29 @@ const installModule = async (client: Client, params: any) => {
 	return true
 }
 
+const removeModule = async (client: Client, params: any) => {
+	const { botId, moduleId } = params
+
+	const exists = await Module.findOne({ botId, moduleId })
+
+	if (exists) {
+		await Module.delete({ botId, moduleId })
+		await BotMate.restart(botId)
+	} else {
+		return { error: 'pluginNotFound' }
+	}
+
+	return true
+}
+
 const saveConfig = async (
 	client: Client,
 	value: string,
 	configProperty: string,
-	botId: number
+	botId: number,
+	moduleId: string
 ) => {
-	console.log('value', value)
-	const module = await Module.findOne({ where: { botId } })
+	const module = await Module.findOne({ where: { botId, moduleId } })
 	if (module) {
 		const { config } = module
 		config[configProperty] = value
@@ -34,4 +50,4 @@ const saveConfig = async (
 	}
 }
 
-export { installModule, saveConfig }
+export { installModule, saveConfig, removeModule }

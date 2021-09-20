@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+const { default: BotMate } = require('../')
+const { version } = require('../package.json')
+const { program } = require('commander')
+program.version(version)
+
+program.option('-s, --start', 'start botmate server')
+program.option('-p, --port <port>', 'start botmate server on this port')
+
+program.parse(process.argv)
+
+const options = program.opts()
+
+let PORT = 5337
+if (options.port) {
+	PORT = options.port
+}
+
+if (options.start) {
+	BotMate(PORT)
+}
