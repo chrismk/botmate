@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.3](https://github.com/botmate/botmate/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2021-09-20)
+
+
+### 🎉 Features
+
+* pass database url via cli ([74beb50](https://github.com/botmate/botmate/commit/74beb5030f2b9c6fb7244ed85eecb92b12bd78b7))
+
 # [1.0.0-beta.2](https://github.com/botmate/botmate/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2021-09-20)
 
 
