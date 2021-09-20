@@ -4,6 +4,9 @@
 	"main": "dist/main.js",
 	"private": false,
 	"license": "MIT",
+	"bin": {
+		"botmate": "./bin/cli"
+	},
 	"scripts": {
 		"dev": "NODE_ENV=development nodemon --exec 'ts-node' src/main.ts",
 		"build": "tsc -p ."
