@@ -69,24 +69,23 @@ const ModuleEditor: React.FC = () => {
 						</GridItem>
 					)
 				})}
-				<GridItem>
-					<Button
-						isLoading={loading}
-						colorScheme='red'
-						onClick={async () => {
-							setLoading(true)
-							await realsync.service('module/remove', {
-								moduleId: module.id,
-								botId: bot.id,
-							})
-							setLoading(false)
-							goBack()
-						}}
-					>
-						Uninstall
-					</Button>
-				</GridItem>
 			</SimpleGrid>
+			<Button
+				mt={4}
+				isLoading={loading}
+				colorScheme='red'
+				onClick={async () => {
+					setLoading(true)
+					await realsync.service('module/remove', {
+						moduleId: module.id,
+						botId: bot.id,
+					})
+					setLoading(false)
+					goBack()
+				}}
+			>
+				Uninstall
+			</Button>
 		</Box>
 	)
 }
