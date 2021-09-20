@@ -31,11 +31,16 @@ realsync.register('module/save-config', saveConfig)
 
 realsync.register('common', common)
 
-if (NODE_ENV === 'development') {
+if (NODE_ENV !== 'production') {
 	BotMate.init()
 	server.listen(PORT, () => {
 		logger.info(`listening on port ${PORT}`)
 	})
 }
 
-export default { BotMate, server }
+export default (port: number) => {
+	BotMate.init()
+	server.listen(port, () => {
+		logger.info(`listening on port ${PORT}`)
+	})
+}
