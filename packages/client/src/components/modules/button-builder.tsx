@@ -159,9 +159,15 @@ const ButtonBuilder: React.FC<Props> = (props) => {
 									colorScheme='red'
 									onClick={() => {
 										const { _row = 0, _col = 0 } = newColModal
+
 										const _rows = [...rows]
 
-										delete _rows[_row][_col]
+										_rows[_row].splice(_col, 1)
+										console.log('_rows', _rows)
+
+										if (_rows[_row].length === 0) {
+											_rows.splice(_row, 1)
+										}
 
 										setRows(_rows)
 										setNewColModal({ visible: false })
