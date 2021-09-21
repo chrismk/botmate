@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.9](https://github.com/botmate/botmate/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2021-09-21)
+
+
+### Bug Fixes
+
+* display port from parameter ([0c8aa46](https://github.com/botmate/botmate/commit/0c8aa468f7813110664f2d76bb1b72d432f1e60b))
+
+
+
+
+
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-beta.4](https://github.com/botmate/botmate/compare/v1.0.0-beta.8...v1.0.0-beta.4) (2021-09-21)
+
+
+### 🐛 Bug Fixes
+
+* display port from parameter ([0c8aa46](https://github.com/botmate/botmate/commit/0c8aa468f7813110664f2d76bb1b72d432f1e60b))
+
+# [1.0.0-beta.8](https://github.com/botmate/botmate/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2021-09-21)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 # [1.0.0-beta.7](https://github.com/botmate/botmate/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2021-09-21)
 
 
