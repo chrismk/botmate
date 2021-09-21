@@ -153,7 +153,20 @@ const ButtonBuilder: React.FC<Props> = (props) => {
 								{t(newColModal.edit ? 'common.update' : 'common.add')}
 							</Button>
 							{newColModal.edit && (
-								<Button size='sm' leftIcon={<HiTrash />} colorScheme='red'>
+								<Button
+									size='sm'
+									leftIcon={<HiTrash />}
+									colorScheme='red'
+									onClick={() => {
+										const { _row = 0, _col = 0 } = newColModal
+										const _rows = [...rows]
+
+										delete _rows[_row][_col]
+
+										setRows(_rows)
+										setNewColModal({ visible: false })
+									}}
+								>
 									{t('common.delete')}
 								</Button>
 							)}
