@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.10](https://github.com/botmate/botmate/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2021-09-21)
+
+
+### Bug Fixes
+
+* **deps:** release then generate changelog ([62f0f19](https://github.com/botmate/botmate/commit/62f0f19bf0533cc6cd8b3f3ceae60aa1f386baf1))
+* set rejectUnauthorized to false ([3e71755](https://github.com/botmate/botmate/commit/3e71755e1710f10804e9338f244fa09539eb7c4c))
+
+
+
+
+
 # [1.0.0-beta.9](https://github.com/botmate/botmate/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2021-09-21)
 
 
