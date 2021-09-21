@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.12](https://github.com/botmate/botmate/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2021-09-21)
+
+
+### Bug Fixes
+
+* call next function for each on handler ([f981d97](https://github.com/botmate/botmate/commit/f981d97539042bc553ae31c889c3615a42cd418b))
+* loadedBots improved ([589483c](https://github.com/botmate/botmate/commit/589483c8adcf952c2251456345d35496331beba7))
+* start bot after it's added ([d4dccb9](https://github.com/botmate/botmate/commit/d4dccb9608269eecce72a1732b1288972782fd6d))
+
+
+### Features
+
+* add monogdb support ([613b6d3](https://github.com/botmate/botmate/commit/613b6d3182e8824b7a94188bf9fc4f126c92e559))
+* working command builder ([247854b](https://github.com/botmate/botmate/commit/247854b24e5510ac20b20c0303e360d62524201f))
+* working command builder ([653559e](https://github.com/botmate/botmate/commit/653559e890261280c5ee103723c143fe22dea38e))
+
+
+### Reverts
+
+* default to postgresql ([a195b7f](https://github.com/botmate/botmate/commit/a195b7f8f28f83a19f1ec110e8bc97f6e44e1bd5))
+
+
+
+
+
 # [1.0.0-beta.11](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2021-09-21)
 
 **Note:** Version bump only for package botmate
