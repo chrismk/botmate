@@ -9,24 +9,36 @@ import { Bot } from '../entity/bot'
 import { Module } from '../entity/module'
 import { BMContext, SessionData } from '../types'
 
-const { DB_URL } = env
+const { DB_URL, SSL } = env
 class BotMate extends Handler {
 	constructor() {
 		super()
 	}
 
 	async init(dbUrl?: string) {
+		let ssl: any = {}
+		let type: 'postgres' | 'mongodb' = 'mongodb'
+
+		if (DB_URL.startsWith('postgres')) {
+			type = 'postgres'
+		}
+
+		if (SSL) {
+			ssl.rejectUnauthorized = false
+		} else {
+			ssl = false
+		}
+
 		// db connection
 		createConnection({
-			type: 'postgres',
+			useUnifiedTopology: true,
+			type,
 			url: dbUrl || DB_URL,
 			database: 'botmate',
 			entities: [path.join(__dirname, '../entity/*.{ts,js}')],
 			synchronize: true,
 			logging: false,
-			ssl: {
-				rejectUnauthorized: false,
-			},
+			ssl,
 		})
 			.then(() => {
 				this.setup()
@@ -37,7 +49,7 @@ class BotMate extends Handler {
 	async setup() {
 		const userBots = await this.fetchBots()
 		userBots.map(async (botData) => {
-			if (botData.status === 1)
+			if (botData && botData.status === 1)
 				try {
 					const bot = new TelegramBot<BMContext>(botData.token)
 
