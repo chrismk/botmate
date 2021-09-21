@@ -1,31 +1,18 @@
-import { useEffect, useState } from 'react'
 import { SimpleGrid, Stack, Heading, GridItem } from '@chakra-ui/layout'
-import { Redirect, Link, useLocation } from 'react-router-dom'
+import { Redirect, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonGroup } from '@chakra-ui/button'
-import { useRecoilState } from 'recoil'
-import { Bot, InstalledModule, modulesAtom } from 'atom'
+import { Button } from '@chakra-ui/button'
+import { Bot } from 'atom'
 
 import BotControl from 'components/bots/controls'
 import UIBreadcrumb from 'components/ui/breadcrumb'
 import { UICard } from 'components/ui/card'
-import realsync from 'providers/realsync'
+import ListModules from 'components/bots/list-modules'
+import ListCommands from 'components/bots/list-commands'
 
 const BotViewer: React.FC = () => {
 	const { t } = useTranslation()
-	const { state: bot, pathname } = useLocation<Bot>()
-	const [installedModules, setInstallModules] = useState<InstalledModule[]>([])
-	const [modules] = useRecoilState(modulesAtom)
-
-	const Fetch = async () => {
-		const data = await realsync.service('module/active', bot.id)
-		setInstallModules(data as InstalledModule[])
-	}
-
-	useEffect(() => {
-		Fetch()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	const { state: bot } = useLocation<Bot>()
 
 	if (!bot) {
 		return <Redirect to='/home' />
@@ -40,45 +27,19 @@ const BotViewer: React.FC = () => {
 				]}
 			/>
 
-			<SimpleGrid columns={{ base: 1, md: 2, '2xl': 3 }} spacing={4}>
-				<BotControl />
-			</SimpleGrid>
+			<SimpleGrid columns={10} spacing={4}>
+				<GridItem colSpan={{ base: 10, md: 5, '2xl': 6 }}>
+					<BotControl />
 
-			<Heading size='md' mb={2}>
-				Modules
-			</Heading>
+					<Heading size='md' my={4}>
+						Modules
+					</Heading>
+					<ListModules />
+				</GridItem>
 
-			<SimpleGrid columns={{ base: 1, md: 2, lg: 3, '2xl': 4 }} spacing={4}>
-				{installedModules.map((module, idx) => {
-					const name = t(`module.${module.moduleId}.name`)
-					const info = t(`module.${module.moduleId}.info`)
-
-					const moduleData = modules[module.moduleId]
-					if (!moduleData) {
-						return null
-					}
-
-					return (
-						<GridItem key={idx}>
-							<UICard title={name} subTitle={info}>
-								<ButtonGroup size='sm'>
-									<Link
-										to={{
-											pathname: `${pathname}/${module.moduleId}`,
-											state: {
-												bot,
-												module: moduleData.meta,
-												config: module.config,
-											},
-										}}
-									>
-										<Button>{t('common.configure')}</Button>
-									</Link>
-								</ButtonGroup>
-							</UICard>
-						</GridItem>
-					)
-				})}
+				<GridItem colSpan={{ base: 10, md: 5, '2xl': 4 }}>
+					<ListCommands />
+				</GridItem>
 			</SimpleGrid>
 		</Stack>
 	)
