@@ -1,0 +1,89 @@
+{
+	"common": {
+		"home": "首页",
+		"modules": "模块",
+		"bots": "机器人",
+		"submit": "提交",
+		"settings": "设置",
+		"success": "成功",
+		"language": "语言",
+		"status": "状态",
+		"botToken": "机器人Token",
+		"allBots": "所有的机器人",
+		"controls": "控件",
+		"color": "颜色",
+		"contributors": "贡献者",
+		"manage": "设置",
+		"delete": "删除",
+		"install": "安装",
+		"learnMore": "了解更多",
+		"pickBot": "选择机器人",
+		"configure": "配置",
+		"edit": "编辑",
+		"new": "新的",
+		"update": "更新",
+		"buttonUrl": "按键链接",
+		"buttonText": "按键文字",
+		"disable": "禁用",
+		"start": "开始",
+		"stop": "停止"
+	},
+	"info": {
+		"language": "更改您的语言",
+		"botToken": "您可以从BotFather中获取机器人Token",
+		"botAdded": "成功添加 {{name}}",
+		"botControls": "开始或者停止您的机器人",
+		"colorPicker": "选择网站的配色方案"
+	},
+	"module": {
+		"feedback": {
+			"name": "呼叫管理",
+			"info": "收集用户的反馈信息",
+			"fields": {
+				"defaultReply": {
+					"name": "默认回复",
+					"info": "当你离开时回复这条信息",
+					"placeholder": "输入信息内容"
+				},
+				"adminId": {
+					"name": "输入管理员ID号",
+					"info": "此ID号的管理员会收到用户的反馈",
+					"placeholder": "管理员ID"
+				}
+			}
+		},
+		"welcome": {
+			"name": "欢迎语",
+			"info": "有新用户入群时,机器人将发送一条欢迎消息",
+			"fields": {
+				"message": {
+					"name": "欢迎语",
+					"info": "有新用户入群时,会发送此条信息",
+					"placeholder": "输入欢迎语内容"
+				},
+				"buttons": {
+					"name": "按键",
+					"info": "这些按键将显示为键盘供用户导航"
+				},
+				"hv": {
+					"name": "真人验证",
+					"info": "除非他们通过验证，否则用户将无法进入群组"
+				}
+			}
+		}
+	},
+	"status": {
+		"0": "已经停止",
+		"1": "正在运行"
+	},
+	"stats": {
+		"totalBots": "机器人总数",
+		"ramUsage": "已使用内存"
+	},
+	"home": {
+		"addNewBot": "添加机器人"
+	},
+	"error": {
+		"pluginAlreadyInstalled": "插件已经安装好"
+	}
+}
