@@ -163,7 +163,6 @@ const ButtonBuilder: React.FC<Props> = (props) => {
 										const _rows = [...rows]
 
 										_rows[_row].splice(_col, 1)
-										console.log('_rows', _rows)
 
 										if (_rows[_row].length === 0) {
 											_rows.splice(_row, 1)
