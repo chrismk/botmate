@@ -43,3 +43,22 @@ export interface LoadedBots {
 		start: () => void
 	}
 }
+
+export type CommandAction = {
+	type: 'text'
+	text: string
+}
+export type CommandCondition = {
+	type: 'fullMatch' | 'regExp'
+	text: string
+}
+export interface BMCommand {
+	id: number
+	name: string
+	actions: {
+		data: CommandAction[]
+	}
+	condition: {
+		data: CommandCondition
+	}
+}

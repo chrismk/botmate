@@ -12,7 +12,7 @@ export class Command extends BaseEntity {
 	actions: JSON
 
 	@Column({ type: 'json' })
-	conditions: JSON
+	condition: JSON
 
 	@Column({ default: true })
 	active: boolean

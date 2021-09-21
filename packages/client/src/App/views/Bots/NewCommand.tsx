@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { Input, Box, GridItem, SimpleGrid, Button } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { useParams, useHistory } from 'react-router-dom'
-import { Actions, Extras, Conditions } from 'components/bots/create-command'
+import { Actions, Extras, Condition } from 'components/bots/create-command'
 import realsync from 'providers/realsync'
 
 const NewCommand: React.FC = () => {
@@ -20,9 +20,9 @@ const NewCommand: React.FC = () => {
 			<Input ref={name} my={4} w='md' placeholder='Enter command name' />
 			<SimpleGrid columns={{ base: 1, lg: 3 }} spacing={4}>
 				<GridItem>
-					<Conditions
-						onSave={(conditions) => {
-							setCommand({ ...command, conditions })
+					<Condition
+						onSave={(condition) => {
+							setCommand({ ...command, condition })
 						}}
 					/>
 				</GridItem>

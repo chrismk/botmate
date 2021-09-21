@@ -10,6 +10,8 @@ import {
 	BMContext,
 } from '../types'
 import { Module } from '../entity/module'
+import { Command } from '../entity/command'
+import { CommandHandler } from './Command'
 
 interface LoadedModules {
 	[botId: number]: BMModuleMeta[]
@@ -42,7 +44,7 @@ class Handler {
 		moduleId: string
 	) {
 		const composer = new Composer<BMContext>()
-		composer.use(async (ctx: BMContext, next: Function) => {
+		composer.use(async (ctx, next) => {
 			if (!ctx.from?.id || !ctx.chat?.id) {
 				return
 			}
@@ -75,12 +77,6 @@ class Handler {
 	}
 
 	async start(bot: TelegramBot<BMContext>) {
-		this.loadedBots[bot.botInfo.id] = {
-			status: false,
-			bot: bot,
-			start: () => this.start(bot),
-		}
-
 		const { botInfo } = bot
 
 		if (this.loadedBots[botInfo.id]) {
@@ -88,9 +84,9 @@ class Handler {
 				return { error: 'already running' }
 			}
 		}
+		this.loadedModules[botInfo.id] = []
 
 		const installedModules = await Module.find({ where: { botId: botInfo.id } })
-		this.loadedModules[botInfo.id] = []
 
 		installedModules.map((iModule) => {
 			const module = modules[iModule.moduleId]
@@ -98,6 +94,12 @@ class Handler {
 			// attach modules to telegram bot
 			this.loadModule(bot, module.module, module.meta.id)
 			this.loadedModules[botInfo.id].push(module.meta)
+		})
+
+		const commands = await Command.find({ where: { bot: bot.botInfo.id } })
+
+		commands.map((command: any) => {
+			new CommandHandler(bot, command)
 		})
 
 		this.loadedBots[botInfo.id].status = true

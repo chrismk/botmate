@@ -6,7 +6,7 @@ const createCommand = async (client: any, params: any) => {
 	try {
 		const cmd = new Command()
 		cmd.actions = command.actions
-		cmd.conditions = command.conditions
+		cmd.condition = command.condition
 		cmd.name = name
 		cmd.bot = bot
 

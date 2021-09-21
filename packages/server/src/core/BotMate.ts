@@ -49,25 +49,30 @@ class BotMate extends Handler {
 	async setup() {
 		const userBots = await this.fetchBots()
 		userBots.map(async (botData) => {
-			if (botData && botData.status === 1)
-				try {
-					const bot = new TelegramBot<BMContext>(botData.token)
+			try {
+				const bot = new TelegramBot<BMContext>(botData.token)
 
-					bot.use(
-						session({
-							initial(): SessionData {
-								return { config: {} }
-							},
-						})
-					)
+				bot.use(
+					session({
+						initial(): SessionData {
+							return { config: {} }
+						},
+					})
+				)
 
-					await bot.init()
+				await bot.init()
 
-					this.start(bot)
-					logger.info(`starting ${bot.botInfo.id}`)
-				} catch (err: any) {
-					logger.error(err)
+				this.loadedBots[bot.botInfo.id] = {
+					status: false,
+					bot: bot,
+					start: () => this.start(bot),
 				}
+
+				if (botData && botData.status === 1) this.start(bot)
+				logger.info(`starting ${bot.botInfo.id}`)
+			} catch (err: any) {
+				logger.error(err)
+			}
 		})
 	}
 
