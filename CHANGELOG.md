@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.0.0-beta.11](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2021-09-21)
+
+
+### Bug Fixes
+
+* **deps:** dont run changelog ([f00f687](https://github.com/botmate/botmate/commit/f00f687272d9fb7c01337098141ccaac06108c2c))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
