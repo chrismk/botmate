@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.11](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2021-09-21)
+
+**Note:** Version bump only for package botmate
+
+
+
+
+
+# [1.0.0-beta.10](https://github.com/botmate/botmate/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2021-09-21)
+
+
+### Bug Fixes
+
+* set rejectUnauthorized to false ([3e71755](https://github.com/botmate/botmate/commit/3e71755e1710f10804e9338f244fa09539eb7c4c))
+
+
+
+
+
+# [1.0.0-beta.9](https://github.com/botmate/botmate/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2021-09-21)
+
+
+### Bug Fixes
+
+* display port from parameter ([0c8aa46](https://github.com/botmate/botmate/commit/0c8aa468f7813110664f2d76bb1b72d432f1e60b))
+
+
+
+
+
+# [1.0.0-beta.8](https://github.com/botmate/botmate/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2021-09-21)
+
+**Note:** Version bump only for package botmate
+
+
+
+
+
+# [1.0.0-beta.6](https://github.com/botmate/botmate/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2021-09-21)
+
+
+### Bug Fixes
+
+* use entity folder ([10dab80](https://github.com/botmate/botmate/commit/10dab803d460161c8f3a3e8ae623c0daadf5901c))
+
+
+
+
+
 # [1.0.0-beta.5](https://github.com/botmate/botmate/compare/v1.0.0-beta.3...v1.0.0-beta.5) (2021-09-20)
 
 **Note:** Version bump only for package botmate

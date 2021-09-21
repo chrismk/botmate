@@ -41,6 +41,6 @@ if (NODE_ENV !== 'production') {
 export default (port: number, dbUrl?: string) => {
 	BotMate.init(dbUrl)
 	server.listen(port, () => {
-		logger.info(`listening on port ${PORT}`)
+		logger.info(`listening on port ${port}`)
 	})
 }

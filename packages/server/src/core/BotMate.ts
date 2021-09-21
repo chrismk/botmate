@@ -1,3 +1,4 @@
+import path from 'path'
 import { createConnection } from 'typeorm'
 import { Bot as TelegramBot, session } from 'grammy'
 import env from '../env'
@@ -9,7 +10,6 @@ import { Module } from '../entity/module'
 import { BMContext, SessionData } from '../types'
 
 const { DB_URL } = env
-
 class BotMate extends Handler {
 	constructor() {
 		super()
@@ -21,9 +21,12 @@ class BotMate extends Handler {
 			type: 'postgres',
 			url: dbUrl || DB_URL,
 			database: 'botmate',
-			entities: [Bot, Module],
+			entities: [path.join(__dirname, '../entity/*.{ts,js}')],
 			synchronize: true,
 			logging: false,
+			ssl: {
+				rejectUnauthorized: false,
+			},
 		})
 			.then(() => {
 				this.setup()

@@ -11,7 +11,8 @@
 		"dev:server": "NODE_ENV=development lerna run dev --scope botmate --stream",
 		"dev:client": "lerna run dev --scope botmate-client",
 		"dev": "concurrently --kill-others \"yarn dev:client\" \"yarn dev:server\"",
-		"release": "standard-version"
+		"changelog": "standard-version",
+		"release": "lerna version --create-release github"
 	},
 	"devDependencies": {
 		"concurrently": "^6.2.1",
@@ -19,5 +20,11 @@
 		"gulp-run": "^1.7.1",
 		"lerna": "^4.0.0",
 		"standard-version": "^9.3.1"
+	},
+	"standard-version": {
+		"skip": {
+			"bump": true,
+			"tag": true
+		}
 	}
 }

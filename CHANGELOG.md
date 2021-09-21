@@ -3,6 +3,115 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.11](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2021-09-21)
+
+
+### Bug Fixes
+
+* **deps:** dont run changelog ([f00f687](https://github.com/botmate/botmate/commit/f00f687272d9fb7c01337098141ccaac06108c2c))
+
+
+
+
+
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-beta.4](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.4) (2021-09-21)
+
+# [1.0.0-beta.10](https://github.com/botmate/botmate/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2021-09-21)
+
+
+### Bug Fixes
+
+* **deps:** release then generate changelog ([62f0f19](https://github.com/botmate/botmate/commit/62f0f19bf0533cc6cd8b3f3ceae60aa1f386baf1))
+* set rejectUnauthorized to false ([3e71755](https://github.com/botmate/botmate/commit/3e71755e1710f10804e9338f244fa09539eb7c4c))
+
+
+
+
+
+# [1.0.0-beta.9](https://github.com/botmate/botmate/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2021-09-21)
+
+
+### Bug Fixes
+
+* display port from parameter ([0c8aa46](https://github.com/botmate/botmate/commit/0c8aa468f7813110664f2d76bb1b72d432f1e60b))
+
+
+
+
+
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-beta.4](https://github.com/botmate/botmate/compare/v1.0.0-beta.8...v1.0.0-beta.4) (2021-09-21)
+
+
+### 🐛 Bug Fixes
+
+* display port from parameter ([0c8aa46](https://github.com/botmate/botmate/commit/0c8aa468f7813110664f2d76bb1b72d432f1e60b))
+
+# [1.0.0-beta.8](https://github.com/botmate/botmate/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2021-09-21)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [1.0.0-beta.7](https://github.com/botmate/botmate/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2021-09-21)
+
+
+### Bug Fixes
+
+* 	location.hostname -> location.host ([bb032ba](https://github.com/botmate/botmate/commit/bb032bac0fe430a62dd75ebe963bee134f3ea832))
+
+
+
+
+
+# [1.0.0-beta.6](https://github.com/botmate/botmate/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2021-09-21)
+
+
+### Bug Fixes
+
+* delete button working ([5f1b9df](https://github.com/botmate/botmate/commit/5f1b9dfc344c235095bef17fed0d7bce318f1205))
+* improved button editor ([2ed5f5f](https://github.com/botmate/botmate/commit/2ed5f5f5a156b5296930450528f35e99270300fb))
+* **sv:** allow commit ([c6a050c](https://github.com/botmate/botmate/commit/c6a050c0bbbfbbed4da14cd9d019bb0ca7394131))
+* **sv:** dont commit or tag ([3ab4236](https://github.com/botmate/botmate/commit/3ab423677311c29ae54878e871bc8160e3097274))
+* use entity folder ([10dab80](https://github.com/botmate/botmate/commit/10dab803d460161c8f3a3e8ae623c0daadf5901c))
+
+
+### Features
+
+* ability to edit button ([77d90b2](https://github.com/botmate/botmate/commit/77d90b27697c7f98265981c0d9366fa1626b52b8))
+
+
+
+
+
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-beta.4](https://github.com/botmate/botmate/compare/v1.0.0-beta.5...v1.0.0-beta.4) (2021-09-21)
+
+
+### 🎉 Features
+
+* ability to edit button ([77d90b2](https://github.com/botmate/botmate/commit/77d90b27697c7f98265981c0d9366fa1626b52b8))
+
+
+### 🐛 Bug Fixes
+
+* delete button working ([5f1b9df](https://github.com/botmate/botmate/commit/5f1b9dfc344c235095bef17fed0d7bce318f1205))
+* improved button editor ([2ed5f5f](https://github.com/botmate/botmate/commit/2ed5f5f5a156b5296930450528f35e99270300fb))
+* **sv:** dont commit or tag ([3ab4236](https://github.com/botmate/botmate/commit/3ab423677311c29ae54878e871bc8160e3097274))
+* use entity folder ([10dab80](https://github.com/botmate/botmate/commit/10dab803d460161c8f3a3e8ae623c0daadf5901c))
+
 # [1.0.0-beta.5](https://github.com/botmate/botmate/compare/v1.0.0-beta.3...v1.0.0-beta.5) (2021-09-20)
 
 
