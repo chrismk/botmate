@@ -33,7 +33,7 @@ const UICard: React.FC<UICardProps> = (props) => {
 			pos='relative'
 			{...style}
 		>
-			<Flex>
+			<Flex alignItems='center'>
 				<Box>
 					<Heading size='md'>{title}</Heading>
 					{subTitle && (

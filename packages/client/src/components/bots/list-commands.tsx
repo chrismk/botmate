@@ -1,7 +1,25 @@
+import { Button } from '@chakra-ui/button'
 import { UICard } from 'components/ui/card'
+import { useHistory } from 'react-router'
 
 const ListCommands: React.FC = () => {
-	return <UICard title='Commands'></UICard>
+	const history = useHistory()
+
+	return (
+		<UICard
+			title='Commands'
+			extras={
+				<Button
+					size='sm'
+					onClick={() =>
+						history.push(history.location.pathname + '/new-command')
+					}
+				>
+					New
+				</Button>
+			}
+		></UICard>
+	)
 }
 
 export default ListCommands

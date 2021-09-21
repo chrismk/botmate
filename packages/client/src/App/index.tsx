@@ -16,6 +16,7 @@ import Settings from './views/Settings'
 import Contributors from './views/Contributors'
 import Modules from './views/Modules'
 import ModuleEditor from './views/Bots/ModuleEditor'
+import NewCommand from './views/Bots/NewCommand'
 
 interface IViews {
 	id: string
@@ -46,9 +47,15 @@ let Views: IViews[] = [
 	},
 	{
 		id: 'module-edit',
+		path: '/bots/:botId/new-command',
+		view: NewCommand,
+	},
+	{
+		id: 'module-edit',
 		path: '/bots/:botId/:modId',
 		view: ModuleEditor,
 	},
+
 	{
 		id: 'modules',
 		path: '/modules',
