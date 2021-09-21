@@ -5,12 +5,13 @@ import BotMate from './core/BotMate'
 import logger from './logger'
 import server from './server'
 import realsync from './realsync'
+import modules from './modules'
 
 // services import
-import { allBot, newBot } from './services/bot'
 import { common } from './services/common'
+import { allBot, newBot } from './services/bot'
 import { installModule, removeModule, saveConfig } from './services/module'
-import modules from './modules'
+import { createCommand, deleteCommand, listCommand } from './services/command'
 
 const { NODE_ENV, PORT } = env
 
@@ -28,6 +29,10 @@ realsync.register('module/install', installModule)
 realsync.register('module/remove', removeModule)
 realsync.register('module/all', () => modules)
 realsync.register('module/save-config', saveConfig)
+
+realsync.register('command/create', createCommand)
+realsync.register('command/list', listCommand)
+realsync.register('command/delete', deleteCommand)
 
 realsync.register('common', common)
 

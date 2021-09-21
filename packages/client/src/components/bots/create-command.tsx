@@ -18,22 +18,28 @@ import { HiPencil, HiPlus, HiTrash, HiX } from 'react-icons/hi'
 
 import { UICard } from 'components/ui/card'
 
-export const Conditions: React.FC = () => {
+export type ConditionsData = { type: 'fullMatch' | 'regExp'; text: string }
+interface ConditionsState {
+	data: ConditionsData[]
+	entry: boolean
+	editing: boolean
+	mode: 'all' | 'random'
+}
+interface ConditionsProps {
+	onSave: (value: { data: ConditionsData[] }) => void
+}
+
+export const Conditions: React.FC<ConditionsProps> = ({ onSave }) => {
 	let ConditionTypes = {
 		fullMatch: 'FULL MATCH',
 		regExp: 'REGEXP',
 	}
-	type Data = { type: 'fullMatch' | 'regExp'; text: string }
-	interface State {
-		data: Data[]
-		entry: boolean
-		editing: boolean
-	}
 
-	const [conditions, setConditions] = useState<State>({
+	const [conditions, setConditions] = useState<ConditionsState>({
 		data: [],
 		entry: false,
 		editing: false,
+		mode: 'all',
 	})
 
 	const Entry = () => {
@@ -43,6 +49,8 @@ export const Conditions: React.FC = () => {
 			const newData = [...conditions.data]
 			newData.push(data)
 			setConditions({ ...conditions, data: newData, entry: false })
+
+			onSave({ data: newData })
 		}
 
 		return (
@@ -84,11 +92,11 @@ export const Conditions: React.FC = () => {
 								</Box>
 								<Spacer />
 								<ButtonGroup size='sm'>
-									<IconButton
+									{/* <IconButton
 										aria-label='edit'
 										colorScheme='purple'
 										icon={<HiPencil />}
-									/>
+									/> */}
 									<IconButton
 										aria-label='edit'
 										colorScheme='red'
@@ -127,7 +135,19 @@ export const Conditions: React.FC = () => {
 	)
 }
 
-export const Actions: React.FC = () => {
+export type ActionsData = {
+	type: 'text' | 'photo' | 'sticker' | 'http'
+	text: string
+}
+interface ActionsState {
+	data: ActionsData[]
+	entry: boolean
+}
+interface ActionsProps {
+	onSave: (e: { data: ActionsData[] }) => void
+}
+
+export const Actions: React.FC<ActionsProps> = ({ onSave }) => {
 	let ActionTypes = [
 		'text',
 		'photo',
@@ -138,17 +158,10 @@ export const Actions: React.FC = () => {
 		'restrict',
 	]
 
-	type Data = {
-		type: 'text' | 'photo' | 'sticker' | 'http'
-		text: string
-	}
-	interface State {
-		data: Data[]
-		entry: boolean
-	}
-
-	const [actions, setActions] = useState<State>({ data: [], entry: false })
-	const [actionType, setActionType] = useState('text')
+	const [actions, setActions] = useState<ActionsState>({
+		data: [],
+		entry: false,
+	})
 
 	const { register, handleSubmit } = useForm()
 
@@ -156,6 +169,8 @@ export const Actions: React.FC = () => {
 		const newData = [...actions.data]
 		newData.push(data)
 		setActions({ ...actions, data: newData, entry: false })
+
+		onSave({ data: newData })
 	}
 
 	const Entry: React.FC = () => {
@@ -202,11 +217,11 @@ export const Actions: React.FC = () => {
 								</Box>
 								<Spacer />
 								<ButtonGroup size='sm'>
-									<IconButton
+									{/* <IconButton
 										aria-label='edit'
 										colorScheme='purple'
 										icon={<HiPencil />}
-									/>
+									/> */}
 									<IconButton
 										aria-label='edit'
 										colorScheme='red'
