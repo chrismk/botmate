@@ -63,12 +63,6 @@ class BotMate extends Handler {
 
 					await bot.init()
 
-					this.loadedBots[bot.botInfo.id] = {
-						status: false,
-						bot: bot,
-						start: () => this.start(bot),
-					}
-
 					this.start(bot)
 					logger.info(`starting ${bot.botInfo.id}`)
 				} catch (err: any) {

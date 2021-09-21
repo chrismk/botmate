@@ -75,10 +75,18 @@ class Handler {
 	}
 
 	async start(bot: TelegramBot<BMContext>) {
+		this.loadedBots[bot.botInfo.id] = {
+			status: false,
+			bot: bot,
+			start: () => this.start(bot),
+		}
+
 		const { botInfo } = bot
 
-		if (this.loadedBots[botInfo.id].status) {
-			return { error: 'already running' }
+		if (this.loadedBots[botInfo.id]) {
+			if (this.loadedBots[botInfo.id].status) {
+				return { error: 'already running' }
+			}
 		}
 
 		const installedModules = await Module.find({ where: { botId: botInfo.id } })
