@@ -12,7 +12,7 @@
 		"dev:client": "lerna run dev --scope botmate-client",
 		"dev": "concurrently --kill-others \"yarn dev:client\" \"yarn dev:server\"",
 		"changelog": "standard-version",
-		"release": "lerna version --create-release github && yarn changelog"
+		"release": "lerna version --create-release github"
 	},
 	"devDependencies": {
 		"concurrently": "^6.2.1",

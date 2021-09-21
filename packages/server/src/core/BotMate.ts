@@ -24,6 +24,9 @@ class BotMate extends Handler {
 			entities: [path.join(__dirname, '../entity/*.{ts,js}')],
 			synchronize: true,
 			logging: false,
+			ssl: {
+				rejectUnauthorized: false,
+			},
 		})
 			.then(() => {
 				this.setup()
