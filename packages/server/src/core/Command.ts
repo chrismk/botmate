@@ -8,7 +8,6 @@ class CommandHandler {
 	constructor(bot: TelegramBot<BMContext>, command: BMCommand) {
 		this.bot = bot
 		this.command = command
-
 		this.handle()
 	}
 
@@ -16,7 +15,8 @@ class CommandHandler {
 		const condition = this.command.condition.data
 		const actions: CommandAction[] = this.command.actions.data
 
-		this.bot.on('msg:text', (ctx) => {
+		this.bot.on('message', (ctx, next) => {
+			next()
 			const text = ctx.message?.text || ''
 
 			switch (condition.type) {
@@ -42,8 +42,6 @@ class CommandHandler {
 
 	async performAction(ctx: BMContext, action: CommandAction) {
 		const { type, text } = action
-		console.log('text', text)
-		console.log('type', type)
 		switch (type) {
 			case 'text':
 				ctx.reply(text)
