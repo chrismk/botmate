@@ -10,4 +10,7 @@ export const languages: any = {
 		name: 'Hebrew',
 		rtl: true,
 	},
+	cn: {
+		name: 'Chinese',
+	},
 }
