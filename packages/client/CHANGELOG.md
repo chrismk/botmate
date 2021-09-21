@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.6](https://github.com/botmate/botmate/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2021-09-21)
+
+
+### Bug Fixes
+
+* delete button working ([5f1b9df](https://github.com/botmate/botmate/commit/5f1b9dfc344c235095bef17fed0d7bce318f1205))
+* improved button editor ([2ed5f5f](https://github.com/botmate/botmate/commit/2ed5f5f5a156b5296930450528f35e99270300fb))
+
+
+### Features
+
+* ability to edit button ([77d90b2](https://github.com/botmate/botmate/commit/77d90b27697c7f98265981c0d9366fa1626b52b8))
+
+
+
+
+
 # [1.0.0-beta.5](https://github.com/botmate/botmate/compare/v1.0.0-beta.3...v1.0.0-beta.5) (2021-09-20)
 
 

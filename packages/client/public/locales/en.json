@@ -19,6 +19,11 @@
 		"learnMore": "Learn more",
 		"pickBot": "Pick Bot",
 		"configure": "Configure",
+		"edit": "Edit",
+		"new": "New",
+		"update": "Update",
+		"buttonUrl": "Button URL",
+		"buttonText": "Button Text",
 		"disable": "Disable",
 		"start": "Start",
 		"stop": "Stop"
