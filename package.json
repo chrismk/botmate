@@ -19,5 +19,12 @@
 		"gulp-run": "^1.7.1",
 		"lerna": "^4.0.0",
 		"standard-version": "^9.3.1"
+	},
+	"standard-version": {
+		"skip": {
+			"bump": true,
+			"commit": true,
+			"tag": true
+		}
 	}
 }
