@@ -1,9 +1,11 @@
 import { Client } from '@realsync/server'
 import { Bot as TelegramBot } from 'grammy'
+import BotMate from '../core/BotMate'
 import { Bot } from '../entity/bot'
+import { BMContext } from '../types'
 
 const newBot = async (client: Client, token: string) => {
-	const userBot = new TelegramBot(token)
+	const userBot = new TelegramBot<BMContext>(token)
 	await userBot.init().then(async () => {
 		const { id, first_name } = userBot.botInfo
 
@@ -14,6 +16,8 @@ const newBot = async (client: Client, token: string) => {
 		bot.token = token
 
 		await bot.save()
+
+		BotMate.start(userBot)
 	})
 
 	return userBot.botInfo
