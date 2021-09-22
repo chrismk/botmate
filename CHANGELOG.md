@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.13](https://github.com/botmate/botmate/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2021-09-22)
+
+
+### Features
+
+* add sihala language ([0d5a444](https://github.com/botmate/botmate/commit/0d5a44479b35d51ce2ad45bc2e6f820cc6fc2ab5))
+* add sinhala language ([719fb58](https://github.com/botmate/botmate/commit/719fb588d51e2336ca56d9ca570b8162c1be1161))
+
+
+
+
+
 # [1.0.0-beta.12](https://github.com/botmate/botmate/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2021-09-21)
 
 
