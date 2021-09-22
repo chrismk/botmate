@@ -10,6 +10,8 @@
 		"build:client": "lerna run build --scope botmate-client --stream",
 		"dev:server": "NODE_ENV=development lerna run dev --scope botmate --stream",
 		"dev:client": "lerna run dev --scope botmate-client",
+		"build": "gulp",
+		"start": "node packages/server/scripts/start.js",
 		"dev": "concurrently --kill-others \"yarn dev:client\" \"yarn dev:server\"",
 		"changelog": "standard-version",
 		"release": "lerna version --create-release github"
