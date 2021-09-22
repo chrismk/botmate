@@ -1,3 +1,4 @@
+import BotMate from '../core/BotMate'
 import { Command } from '../entity/command'
 
 const createCommand = async (client: any, params: any) => {
@@ -11,6 +12,8 @@ const createCommand = async (client: any, params: any) => {
 		cmd.bot = bot
 
 		await cmd.save()
+
+		await BotMate.restart(bot)
 	} catch (error) {
 		console.log('error', error)
 	}

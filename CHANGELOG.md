@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.15](https://github.com/botmate/botmate/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2021-09-22)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [1.0.0-beta.14](https://github.com/botmate/botmate/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2021-09-22)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [1.0.0-beta.13](https://github.com/botmate/botmate/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2021-09-22)
+
+
+### Features
+
+* add sihala language ([0d5a444](https://github.com/botmate/botmate/commit/0d5a44479b35d51ce2ad45bc2e6f820cc6fc2ab5))
+* add sinhala language ([719fb58](https://github.com/botmate/botmate/commit/719fb588d51e2336ca56d9ca570b8162c1be1161))
+
+
+
+
+
+# [1.0.0-beta.12](https://github.com/botmate/botmate/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2021-09-21)
+
+
+### Bug Fixes
+
+* call next function for each on handler ([f981d97](https://github.com/botmate/botmate/commit/f981d97539042bc553ae31c889c3615a42cd418b))
+* loadedBots improved ([589483c](https://github.com/botmate/botmate/commit/589483c8adcf952c2251456345d35496331beba7))
+* start bot after it's added ([d4dccb9](https://github.com/botmate/botmate/commit/d4dccb9608269eecce72a1732b1288972782fd6d))
+
+
+### Features
+
+* add chinese support from [@chrismk](https://github.com/chrismk) ([261049a](https://github.com/botmate/botmate/commit/261049a6d67e211a10fc8d8e4258505bcd545430))
+* add monogdb support ([613b6d3](https://github.com/botmate/botmate/commit/613b6d3182e8824b7a94188bf9fc4f126c92e559))
+* working command builder ([247854b](https://github.com/botmate/botmate/commit/247854b24e5510ac20b20c0303e360d62524201f))
+* working command builder ([653559e](https://github.com/botmate/botmate/commit/653559e890261280c5ee103723c143fe22dea38e))
+
+
+### Reverts
+
+* default to postgresql ([a195b7f](https://github.com/botmate/botmate/commit/a195b7f8f28f83a19f1ec110e8bc97f6e44e1bd5))
+
+
+
+
+
 # [1.0.0-beta.11](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2021-09-21)
 
 

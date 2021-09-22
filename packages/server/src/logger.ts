@@ -1,7 +1,5 @@
 import { createLogger, format, transports } from 'winston'
 
-const { NODE_ENV } = process.env
-
 const logFormatter = format.printf((info) => {
 	let { timestamp, level, stack, message } = info
 	message = stack || message

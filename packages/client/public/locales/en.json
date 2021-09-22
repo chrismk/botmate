@@ -47,7 +47,7 @@
 				},
 				"adminId": {
 					"name": "Enter Admin ID",
-					"info": "User wit this ID will receive feedback from user",
+					"info": "User with this ID will receive feedback from user",
 					"placeholder": "Admin ID"
 				}
 			}

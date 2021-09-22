@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.15](https://github.com/botmate/botmate/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2021-09-22)
+
+**Note:** Version bump only for package botmate-client
+
+
+
+
+
+# [1.0.0-beta.13](https://github.com/botmate/botmate/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2021-09-22)
+
+
+### Features
+
+* add sihala language ([0d5a444](https://github.com/botmate/botmate/commit/0d5a44479b35d51ce2ad45bc2e6f820cc6fc2ab5))
+* add sinhala language ([719fb58](https://github.com/botmate/botmate/commit/719fb588d51e2336ca56d9ca570b8162c1be1161))
+
+
+
+
+
+# [1.0.0-beta.12](https://github.com/botmate/botmate/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2021-09-21)
+
+
+### Features
+
+* add chinese support from [@chrismk](https://github.com/chrismk) ([261049a](https://github.com/botmate/botmate/commit/261049a6d67e211a10fc8d8e4258505bcd545430))
+* working command builder ([247854b](https://github.com/botmate/botmate/commit/247854b24e5510ac20b20c0303e360d62524201f))
+* working command builder ([653559e](https://github.com/botmate/botmate/commit/653559e890261280c5ee103723c143fe22dea38e))
+
+
+
+
+
 # [1.0.0-beta.11](https://github.com/botmate/botmate/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2021-09-21)
 
 **Note:** Version bump only for package botmate-client
