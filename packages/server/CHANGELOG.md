@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.16](https://github.com/botmate/botmate/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2021-09-22)
+
+
+### Features
+
+* add start script ([e1936f2](https://github.com/botmate/botmate/commit/e1936f2c77f54182fe94188c42fb76fbe4fc374b))
+* user can update command and other improvments ([6e58689](https://github.com/botmate/botmate/commit/6e58689bf38c5e0b341e7552535bba62a6acac46))
+
+
+
+
+
 # [1.0.0-beta.15](https://github.com/botmate/botmate/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2021-09-22)
 
 **Note:** Version bump only for package botmate
