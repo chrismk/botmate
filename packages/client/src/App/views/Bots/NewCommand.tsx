@@ -1,9 +1,16 @@
 import { useRef, useState } from 'react'
-import { Input, Box, GridItem, SimpleGrid, Button } from '@chakra-ui/react'
-import { Heading } from '@chakra-ui/react'
+import {
+	Input,
+	Stack,
+	GridItem,
+	SimpleGrid,
+	ButtonGroup,
+	Button,
+} from '@chakra-ui/react'
 import { useParams, useHistory } from 'react-router-dom'
 import { Actions, Extras, Condition } from 'components/bots/create-command'
 import realsync from 'providers/realsync'
+import { UICard } from 'components/ui/card'
 
 const NewCommand: React.FC = () => {
 	const history = useHistory()
@@ -13,11 +20,14 @@ const NewCommand: React.FC = () => {
 	const [command, setCommand] = useState<any>({ actions: [], conditions: [] })
 
 	return (
-		<Box>
-			<Heading size='md' mb={4}>
-				Create new command
-			</Heading>
-			<Input ref={name} my={4} w='md' placeholder='Enter command name' />
+		<Stack spacing={4}>
+			<UICard title='Create new command'>
+				<Input
+					ref={name}
+					w={{ base: 'full', md: 'md' }}
+					placeholder='Enter command name'
+				/>
+			</UICard>
 			<SimpleGrid columns={{ base: 1, lg: 3 }} spacing={4}>
 				<GridItem>
 					<Condition
@@ -38,23 +48,32 @@ const NewCommand: React.FC = () => {
 				</GridItem>
 			</SimpleGrid>
 
-			<Button
-				mt={4}
-				isLoading={loading}
-				onClick={async () => {
-					setLoading(true)
-					await realsync.service('command/create', {
-						command,
-						name: name.current?.value,
-						bot: botId,
-					})
-					setLoading(false)
-					history.goBack()
-				}}
-			>
-				Save
-			</Button>
-		</Box>
+			<ButtonGroup size='sm' mt={4}>
+				<Button
+					isLoading={loading}
+					onClick={async () => {
+						setLoading(true)
+						await realsync.service('command/create', {
+							command,
+							name: name.current?.value,
+							bot: botId,
+						})
+						setLoading(false)
+						history.goBack()
+					}}
+				>
+					Save
+				</Button>
+				<Button
+					colorScheme='red'
+					onClick={() => {
+						history.goBack()
+					}}
+				>
+					Cancel
+				</Button>
+			</ButtonGroup>
+		</Stack>
 	)
 }
 export default NewCommand
