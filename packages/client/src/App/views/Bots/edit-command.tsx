@@ -7,23 +7,46 @@ import {
 	ButtonGroup,
 	Button,
 } from '@chakra-ui/react'
-import { useParams, useHistory } from 'react-router-dom'
 import { Actions, Extras, Condition } from 'components/bots/create-command'
 import realsync from 'providers/realsync'
 import { UICard } from 'components/ui/card'
 
-const NewCommand: React.FC = () => {
-	const history = useHistory()
-	const { botId } = useParams<any>()
-	const name = useRef<HTMLInputElement>(null)
+import { Redirect, useHistory, useLocation } from 'react-router'
+import { ActionsData, ConditionData } from 'components/bots/create-command'
+
+interface Command {
+	id: number
+	name: string
+	condition: {
+		data: ConditionData
+	}
+	actions: {
+		data: ActionsData[]
+	}
+	active: boolean
+	bot: number
+}
+
+interface EditCommandProps {
+	state?: Command
+}
+
+const EditCommand: React.FC<EditCommandProps> = () => {
 	const [loading, setLoading] = useState(false)
-	const [command, setCommand] = useState<any>({ actions: [], conditions: [] })
+	const [command, setCommand] = useState({})
+	const { state: prevCommand } = useLocation<Command>()
+	const history = useHistory()
+
+	if (!prevCommand) {
+		return <Redirect to='/home' />
+	}
 
 	return (
 		<Stack spacing={4}>
 			<UICard title='Create new command'>
 				<Input
-					ref={name}
+					disabled
+					value={prevCommand.name}
 					w={{ base: 'full', md: 'md' }}
 					placeholder='Enter command name'
 				/>
@@ -31,6 +54,7 @@ const NewCommand: React.FC = () => {
 			<SimpleGrid columns={{ base: 1, lg: 3 }} spacing={4}>
 				<GridItem>
 					<Condition
+						def={prevCommand.condition.data}
 						onSave={(condition) => {
 							setCommand({ ...command, condition })
 						}}
@@ -38,6 +62,7 @@ const NewCommand: React.FC = () => {
 				</GridItem>
 				<GridItem>
 					<Actions
+						def={prevCommand.actions.data}
 						onSave={(actions) => {
 							setCommand({ ...command, actions })
 						}}
@@ -53,18 +78,19 @@ const NewCommand: React.FC = () => {
 					isLoading={loading}
 					onClick={async () => {
 						setLoading(true)
-						await realsync.service('command/create', {
-							command,
-							name: name.current?.value,
-							bot: botId,
+						console.log('command', command)
+						await realsync.service('command/update', {
+							...command,
+							id: prevCommand.id,
+							bot: prevCommand.bot,
 						})
 						setLoading(false)
-						history.goBack()
 					}}
 				>
-					Save
+					Update
 				</Button>
 				<Button
+					variant='outline'
 					colorScheme='red'
 					onClick={() => {
 						history.goBack()
@@ -76,4 +102,5 @@ const NewCommand: React.FC = () => {
 		</Stack>
 	)
 }
-export default NewCommand
+
+export { EditCommand }

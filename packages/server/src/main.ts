@@ -11,7 +11,12 @@ import modules from './modules'
 import { common } from './services/common'
 import { allBot, newBot } from './services/bot'
 import { installModule, removeModule, saveConfig } from './services/module'
-import { createCommand, deleteCommand, listCommand } from './services/command'
+import {
+	createCommand,
+	deleteCommand,
+	listCommand,
+	updateCommand,
+} from './services/command'
 
 const { NODE_ENV, PORT } = env
 
@@ -33,6 +38,7 @@ realsync.register('module/save-config', saveConfig)
 realsync.register('command/create', createCommand)
 realsync.register('command/list', listCommand)
 realsync.register('command/delete', deleteCommand)
+realsync.register('command/update', updateCommand)
 
 realsync.register('common', common)
 

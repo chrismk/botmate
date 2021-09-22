@@ -1,17 +1,19 @@
-import { Button } from '@chakra-ui/button'
-import { Box, Flex, Spacer, Text } from '@chakra-ui/layout'
+import { Button, ButtonGroup, IconButton } from '@chakra-ui/button'
+import { Flex, Spacer, Text } from '@chakra-ui/layout'
 import { UICard } from 'components/ui/card'
 import realsync from 'providers/realsync'
 import { useEffect, useState } from 'react'
+import { HiOutlineTrash, HiPencil } from 'react-icons/hi'
 import { useHistory, useParams } from 'react-router'
-import { ActionsData, ConditionsData } from './create-command'
+import { Link } from 'react-router-dom'
+import { ActionsData, ConditionData } from './create-command'
 
 interface CommandsState {
 	id: number
 	name: string
 	active: boolean
 	bot: number
-	conditions: ConditionsData[]
+	condition: ConditionData
 	actions: ActionsData[]
 }
 
@@ -50,19 +52,33 @@ const ListCommands: React.FC = () => {
 					<Flex key={idx}>
 						<Text>{command.name || 'No name ' + idx}</Text>
 						<Spacer />
-						<Button
-							size='xs'
-							colorScheme='red'
-							onClick={async () => {
-								await realsync.service('command/delete', {
-									bot: params.botId,
-									commandId: command.id,
-								})
-								Fetch()
-							}}
-						>
-							Delete
-						</Button>
+						<ButtonGroup size='sm'>
+							<Link
+								to={{
+									pathname: history.location.pathname + '/edit-command',
+									state: command,
+								}}
+							>
+								<IconButton
+									aria-label='edit'
+									variant='ghost'
+									icon={<HiPencil />}
+								/>
+							</Link>
+							<IconButton
+								aria-label='delete'
+								variant='outline'
+								icon={<HiOutlineTrash />}
+								colorScheme='red'
+								onClick={async () => {
+									await realsync.service('command/delete', {
+										bot: params.botId,
+										commandId: command.id,
+									})
+									Fetch()
+								}}
+							/>
+						</ButtonGroup>
 					</Flex>
 				)
 			})}
