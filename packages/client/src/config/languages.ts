@@ -13,4 +13,7 @@ export const languages: any = {
 	cn: {
 		name: 'Chinese',
 	},
+	sn: {
+		name: 'Sinhala',
+	},
 }
