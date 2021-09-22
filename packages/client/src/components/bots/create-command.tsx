@@ -9,42 +9,44 @@ import {
 	IconButton,
 	Select,
 	Input,
+	Textarea,
 	Spacer,
 	ButtonGroup,
 	Divider,
 } from '@chakra-ui/react'
 import { FormControl, FormLabel } from '@chakra-ui/react'
-import { HiPencil, HiPlus, HiTrash, HiX } from 'react-icons/hi'
+import { HiPlus, HiTrash } from 'react-icons/hi'
 
 import { UICard } from 'components/ui/card'
 
-export type ConditionsData = { type: 'fullMatch' | 'regExp'; text: string }
-interface ConditionsState {
-	data: ConditionsData
+export type ConditionData = { type: 'fullMatch' | 'regExp'; text: string }
+interface ConditionState {
+	data: ConditionData
 	entry: boolean
 	editing: boolean
 	mode: 'all' | 'random'
 }
 interface ConditionsProps {
-	onSave: (value: { data: ConditionsData }) => void
+	def?: ConditionData
+	onSave: (value: { data: ConditionData }) => void
 }
 
-export const Condition: React.FC<ConditionsProps> = ({ onSave }) => {
+export const Condition: React.FC<ConditionsProps> = ({ def, onSave }) => {
 	let ConditionTypes = {
 		fullMatch: 'FULL MATCH',
 		regExp: 'REGEXP',
 	}
 
-	const [conditions, setConditions] = useState<ConditionsState>({
-		data: { type: 'fullMatch', text: '' },
+	const [condition, setCondition] = useState<ConditionState>({
+		data: def || { type: 'fullMatch', text: '' },
 		entry: false,
 		editing: false,
 		mode: 'all',
 	})
 
 	useEffect(() => {
-		onSave({ data: conditions.data })
-	}, [conditions])
+		onSave({ data: condition.data })
+	}, [condition])
 
 	return (
 		<UICard title='Condition'>
@@ -53,13 +55,14 @@ export const Condition: React.FC<ConditionsProps> = ({ onSave }) => {
 					<FormControl>
 						<FormLabel>Condition Type</FormLabel>
 						<Select
+							defaultValue={condition.data.type}
 							placeholder='Select condition'
 							onChange={(e) => {
 								const value = e.target.value
-								const prevData: any = conditions.data // todo: remove any
+								const prevData: any = condition.data // todo: remove any
 								prevData.type = value
 
-								setConditions({ ...conditions, data: prevData })
+								setCondition({ ...condition, data: prevData })
 							}}
 						>
 							<option value='fullMatch'>Full match</option>
@@ -70,12 +73,13 @@ export const Condition: React.FC<ConditionsProps> = ({ onSave }) => {
 					<FormControl>
 						<FormLabel>Condition Text</FormLabel>
 						<Input
+							defaultValue={condition.data.text}
 							onChange={(e) => {
 								const value = e.target.value
-								const prevData: any = conditions.data // todo: remove any
+								const prevData: any = condition.data // todo: remove any
 								prevData.text = value
 
-								setConditions({ ...conditions, data: prevData })
+								setCondition({ ...condition, data: prevData })
 							}}
 						/>
 					</FormControl>
@@ -94,10 +98,12 @@ interface ActionsState {
 	entry: boolean
 }
 interface ActionsProps {
+	def?: ActionsData[]
 	onSave: (e: { data: ActionsData[] }) => void
 }
 
-export const Actions: React.FC<ActionsProps> = ({ onSave }) => {
+export const Actions: React.FC<ActionsProps> = ({ def, onSave }) => {
+	console.log('def', def)
 	let ActionTypes = [
 		'text',
 		'photo',
@@ -109,7 +115,7 @@ export const Actions: React.FC<ActionsProps> = ({ onSave }) => {
 	]
 
 	const [actions, setActions] = useState<ActionsState>({
-		data: [],
+		data: def || [],
 		entry: false,
 	})
 
@@ -119,9 +125,11 @@ export const Actions: React.FC<ActionsProps> = ({ onSave }) => {
 		const newData = [...actions.data]
 		newData.push(data)
 		setActions({ ...actions, data: newData, entry: false })
-
-		onSave({ data: newData })
 	}
+
+	useEffect(() => {
+		onSave({ data: actions.data })
+	}, [actions])
 
 	const Entry: React.FC = () => {
 		return (
@@ -141,7 +149,7 @@ export const Actions: React.FC<ActionsProps> = ({ onSave }) => {
 
 						<FormControl>
 							<FormLabel>Action Text</FormLabel>
-							<Input {...register('text')} />
+							<Textarea resize='none' {...register('text')} />
 						</FormControl>
 
 						<Button type='submit' variant='outline'>

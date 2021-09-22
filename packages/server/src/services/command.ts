@@ -29,4 +29,9 @@ const deleteCommand = async (client: any, params: any) => {
 	await Command.delete({ id: commandId, bot })
 }
 
-export { createCommand, listCommand, deleteCommand }
+const updateCommand = async (client: any, params: any) => {
+	const { bot, ...rest } = params
+	await Command.update({ bot }, { ...rest })
+}
+
+export { createCommand, listCommand, deleteCommand, updateCommand }
