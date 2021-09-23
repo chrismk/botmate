@@ -30,8 +30,8 @@ const deleteCommand = async (client: any, params: any) => {
 }
 
 const updateCommand = async (client: any, params: any) => {
-	const { bot, ...rest } = params
-	await Command.update({ bot }, { ...rest })
+	const { bot, id, ...rest } = params
+	await Command.update({ bot, id }, { ...rest })
 }
 
 export { createCommand, listCommand, deleteCommand, updateCommand }
