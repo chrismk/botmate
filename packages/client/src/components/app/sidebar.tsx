@@ -100,10 +100,12 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 			</Stack>
 			<Box
 				pos='absolute'
-				bottom={4}
+				bottom={0}
 				textAlign='center'
 				w='full'
-				textColor='gray.500'
+				textColor='gray.100'
+				bg='brand.300'
+				py={2}
 			>
 				<Text>v{common.version}</Text>
 			</Box>
