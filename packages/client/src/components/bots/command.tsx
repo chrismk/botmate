@@ -18,6 +18,7 @@ import { FormControl, FormLabel } from '@chakra-ui/react'
 import { HiPlus, HiTrash } from 'react-icons/hi'
 
 import { UICard } from 'components/ui/card'
+import ButtonBuilder from 'components/app/button-builder'
 
 export type ConditionData = { type: 'fullMatch' | 'regExp'; text: string }
 interface ConditionState {
@@ -103,7 +104,7 @@ interface ActionsProps {
 }
 
 export const Actions: React.FC<ActionsProps> = ({ def, onSave }) => {
-	console.log('def', def)
+	const [buttons, setButtons] = useState<any[][]>([])
 	let ActionTypes = [
 		'text',
 		'photo',
@@ -122,6 +123,7 @@ export const Actions: React.FC<ActionsProps> = ({ def, onSave }) => {
 	const { register, handleSubmit } = useForm()
 
 	const onSubmit = (data: any) => {
+		data.buttons = buttons
 		const newData = [...actions.data]
 		newData.push(data)
 		setActions({ ...actions, data: newData, entry: false })
@@ -150,6 +152,16 @@ export const Actions: React.FC<ActionsProps> = ({ def, onSave }) => {
 						<FormControl>
 							<FormLabel>Action Text</FormLabel>
 							<Textarea resize='none' {...register('text')} />
+						</FormControl>
+
+						<FormControl>
+							<FormLabel>Buttons</FormLabel>
+							<ButtonBuilder
+								defValue={buttons}
+								onChange={(btns) => {
+									setButtons(btns)
+								}}
+							/>
 						</FormControl>
 
 						<Button type='submit' variant='outline'>

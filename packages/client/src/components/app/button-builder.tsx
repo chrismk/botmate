@@ -17,7 +17,7 @@ type Buttons = any[][]
 
 interface Props {
 	onChange: (buttons: Buttons) => void
-	defValue: any
+	defValue?: any
 }
 
 interface ModalState {
