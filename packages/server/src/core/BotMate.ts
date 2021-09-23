@@ -75,8 +75,10 @@ class BotMate extends Handler {
 			start: () => this.start(bot),
 		}
 
-		if (status === 1) this.start(bot)
-		logger.info(`starting ${bot.botInfo.id}`)
+		if (status === 1) {
+			this.start(bot)
+			logger.info(`starting ${bot.botInfo.id}`)
+		}
 	}
 
 	async findBotModule(botId: number) {
@@ -86,13 +88,14 @@ class BotMate extends Handler {
 
 	async restart(botId: number) {
 		await this.clientStop(botId)
-		await this.clientStart(botId)
+		this.clientStart(botId)
 	}
 
 	async clientStart(botId: number) {
 		const botData = await Bot.findOne({ where: { id: botId } })
 		if (botData) {
 			const bot = new TelegramBot<BMContext>(botData.token)
+			await Bot.update({ id: botId }, { status: 1 })
 			this.createBotInstance(bot, 1)
 		}
 
