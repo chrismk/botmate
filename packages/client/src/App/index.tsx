@@ -9,15 +9,15 @@ import AppSidebar from 'components/app/sidebar'
 import AppHeader from 'components/app/header'
 
 // Views
-import Home from './views/Home'
-import Bots from './views/Bots'
-import BotViewer from './views/Bots/Viewer'
-import Settings from './views/Settings'
-import Contributors from './views/Contributors'
-import Modules from './views/Modules'
-import ModuleEditor from './views/Bots/ModuleEditor'
-import NewCommand from './views/Bots/NewCommand'
-import { EditCommand } from './views/Bots/edit-command'
+import Home from './views/home'
+import Bots from './views/bots'
+import BotViewer from './views/bots/viewer'
+import Settings from './views/settings'
+import Contributors from './views/contributors'
+import Modules from './views/modules'
+import ModuleEditor from './views/bots/module-editor'
+import NewCommand from './views/bots/new-command'
+import { EditCommand } from './views/bots/edit-command'
 
 interface IViews {
 	id: string
