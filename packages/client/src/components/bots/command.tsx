@@ -181,8 +181,10 @@ export const Actions: React.FC<ActionsProps> = ({ def, onSave }) => {
 						<Box key={idx}>
 							<Divider mb={2} />
 							<Flex alignItems='center'>
-								<Box>
-									<Text>{data.text}</Text>
+								<Box overflow='hidden'>
+									<Text noOfLines={1} textOverflow='ellipsis'>
+										{data.text}
+									</Text>
 									<Text fontSize='xs'>{data.type}</Text>
 								</Box>
 								<Spacer />
