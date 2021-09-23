@@ -26,6 +26,7 @@ realsync.register('bot/all', allBot)
 realsync.register('bot/active', () => BotMate.loadedBots)
 realsync.register('bot/start', (client, id: number) => BotMate.clientStart(id))
 realsync.register('bot/stop', (client, id: number) => BotMate.clientStop(id))
+realsync.register('bot/restart', (client, id: number) => BotMate.restart(id))
 
 realsync.register('module/active', (client, botId: number) =>
 	BotMate.findBotModule(botId)
