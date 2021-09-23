@@ -6,6 +6,8 @@ import { HiHome, HiChat, HiCog, HiUsers, HiCube } from 'react-icons/hi'
 import { IconType } from 'react-icons/lib'
 import { useRecoilState } from 'recoil'
 import { commonAtom } from 'atom'
+import { useEffect, useMemo, useState } from 'react'
+import useFetch from 'use-http'
 
 interface AppSidebarItemProps {
 	isActive: boolean
@@ -42,6 +44,26 @@ interface Props {
 const AppSidebar: React.FC<Props> = ({ active }) => {
 	const { t } = useTranslation()
 	const [common] = useRecoilState(commonAtom)
+	const [latest, setLatest] = useState('')
+	const githubApi = useFetch(
+		'https://api.github.com/repos/botmate/botmate/releases'
+	)
+
+	const FetchLatestVersion = () => {
+		githubApi.get().then((releases) => {
+			const latest = releases[0]
+			setLatest(latest.name)
+		})
+	}
+
+	useEffect(() => {
+		FetchLatestVersion()
+	}, [])
+
+	const latestAvailable = useMemo(
+		() => latest !== '' && latest !== `v${common.version}`,
+		[latest]
+	)
 
 	const SidebarItems: any = {
 		home: {
@@ -98,16 +120,14 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 					)
 				})}
 			</Stack>
-			<Box
-				pos='absolute'
-				bottom={0}
-				textAlign='center'
-				w='full'
-				textColor='gray.100'
-				bg='brand.300'
-				py={2}
-			>
-				<Text>v{common.version}</Text>
+			<Box pos='absolute' bottom={0} textAlign='center' w='full'>
+				<Text
+					textColor='gray.100'
+					bg={latestAvailable ? 'orange.300' : 'brand.300'}
+					py={2}
+				>
+					v{common.version}
+				</Text>
 			</Box>
 		</Box>
 	)
