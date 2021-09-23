@@ -33,3 +33,12 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+
+      - uses: actions/checkout@master
+      - name: send message in chat about the event
+        uses: appleboy/telegram-action@master
+        with:
+          to: -1001389787240
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: 🚀  BotMate **${{ github.event.release.tag_name  }}** is released. [Learn more](https://github.com/botmate/botmate/releases/tag/${{ github.event.release.tag_name  }}).
+          format: markdown
