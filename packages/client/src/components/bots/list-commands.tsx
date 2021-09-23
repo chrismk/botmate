@@ -61,7 +61,6 @@ const ListCommands: React.FC = () => {
 			{commands?.map((command, idx) => {
 				return (
 					<Box key={idx}>
-						<Divider />
 						<Flex>
 							<Box>
 								<Text>{command.name || 'No name ' + idx}</Text>
