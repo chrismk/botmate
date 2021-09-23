@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { HiOutlineTrash, HiPencil } from 'react-icons/hi'
 import { useHistory, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
-import { ActionsData, ConditionData } from './create-command'
+import { ActionsData, ConditionData } from './command'
 
 interface CommandsState {
 	id: number

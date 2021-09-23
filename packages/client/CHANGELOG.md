@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.17](https://github.com/botmate/botmate/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2021-09-23)
+
+
+### Features
+
+* add buttons support in actions ([3781725](https://github.com/botmate/botmate/commit/3781725f1421b904499ddc75c938bacd6d7cda0f))
+* add update checker ([76c970c](https://github.com/botmate/botmate/commit/76c970c66ef288431f585706178d78ccb1395705))
+* **bot:** add loading status to toggle button ([0e86f8b](https://github.com/botmate/botmate/commit/0e86f8bf5dc2a3ee572ab5905ea58f41cb88afeb))
+* **module:** add loading status [spinner] ([5ee36f8](https://github.com/botmate/botmate/commit/5ee36f835f70e2e08ed34a3fc80f658beda8be24))
+
+
+
+
+
 # [1.0.0-beta.16](https://github.com/botmate/botmate/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2021-09-22)
 
 

@@ -7,12 +7,12 @@ import {
 	ButtonGroup,
 	Button,
 } from '@chakra-ui/react'
-import { Actions, Extras, Condition } from 'components/bots/create-command'
+import { Actions, Extras, Condition } from 'components/bots/command'
 import realsync from 'providers/realsync'
 import { UICard } from 'components/ui/card'
 
 import { Redirect, useHistory, useLocation } from 'react-router'
-import { ActionsData, ConditionData } from 'components/bots/create-command'
+import { ActionsData, ConditionData } from 'components/bots/command'
 
 interface Command {
 	id: number
@@ -75,10 +75,9 @@ const EditCommand: React.FC<EditCommandProps> = () => {
 
 			<ButtonGroup size='sm' mt={4}>
 				<Button
-					isLoading={loading}
+					// isLoading={loading}
 					onClick={async () => {
 						setLoading(true)
-						console.log('command', command)
 						await realsync.service('command/update', {
 							...command,
 							id: prevCommand.id,

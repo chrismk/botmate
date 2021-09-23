@@ -2,7 +2,7 @@ import { Button, ButtonGroup, Input, Textarea, Switch } from '@chakra-ui/react'
 import { UICard } from 'components/ui/card'
 import realsync from 'providers/realsync'
 import { useState } from 'react'
-import ButtonBuilder from './button-builder'
+import ButtonBuilder from '../app/button-builder'
 
 export type FieldType = 'text' | 'string' | 'number' | 'switch' | 'button'
 

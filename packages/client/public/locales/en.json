@@ -26,7 +26,8 @@
 		"buttonText": "Button Text",
 		"disable": "Disable",
 		"start": "Start",
-		"stop": "Stop"
+		"stop": "Stop",
+		"add": "Add"
 	},
 	"info": {
 		"language": "Change your preferred language",

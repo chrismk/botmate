@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.17](https://github.com/botmate/botmate/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2021-09-23)
+
+
+### Bug Fixes
+
+* status toggle working fine ([ab197a3](https://github.com/botmate/botmate/commit/ab197a300f92ef259c14ddcc1bbcdd58d73f0622))
+
+
+
+
+
 # [1.0.0-beta.16](https://github.com/botmate/botmate/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2021-09-22)
 
 
