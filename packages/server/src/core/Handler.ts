@@ -1,6 +1,5 @@
-import logger from '../logger'
-import { Bot as TelegramBot, Composer } from 'grammy'
 import { Bot } from '../entity/bot'
+import { Bot as TelegramBot, Composer } from 'grammy'
 import modules from '../modules'
 import {
 	BMModuleHandler,
@@ -78,6 +77,13 @@ class Handler {
 
 	async start(bot: TelegramBot<BMContext>) {
 		const { botInfo } = bot
+
+		bot.command('bmid', (ctx) => {
+			ctx.reply(
+				JSON.stringify(ctx.message?.reply_to_message || {}, null, 2),
+				{}
+			)
+		})
 
 		if (this.loadedBots[botInfo.id]) {
 			if (this.loadedBots[botInfo.id].status) {
