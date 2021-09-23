@@ -8,7 +8,7 @@ import {
 	Button,
 } from '@chakra-ui/react'
 import { useParams, useHistory } from 'react-router-dom'
-import { Actions, Extras, Condition } from 'components/bots/create-command'
+import { Actions, Extras, Condition } from 'components/bots/command'
 import realsync from 'providers/realsync'
 import { UICard } from 'components/ui/card'
 
