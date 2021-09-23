@@ -39,6 +39,6 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
           to: -1001389787240
-          token: ${{ secrets.TELEGRAM_TOKEN }}
+          token: ${{ secrets.BOT_TOKEN }}
           args: 🚀  BotMate **${{ github.event.release.tag_name  }}** is released. [Learn more](https://github.com/botmate/botmate/releases/tag/${{ github.event.release.tag_name  }}).
           format: markdown
