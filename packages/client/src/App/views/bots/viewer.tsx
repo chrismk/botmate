@@ -28,7 +28,9 @@ const BotViewer: React.FC = () => {
 
 			<SimpleGrid columns={10} spacing={4}>
 				<GridItem colSpan={{ base: 10, md: 5, '2xl': 6 }}>
-					<BotControl />
+					<SimpleGrid columns={{ base: 1, xl: 2 }} spacing={4}>
+						<BotControl />
+					</SimpleGrid>
 
 					<Heading size='md' my={4}>
 						Modules
