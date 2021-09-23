@@ -7,6 +7,7 @@ import BotControl from 'components/bots/controls'
 import UIBreadcrumb from 'components/ui/breadcrumb'
 import ListModules from 'components/bots/list-modules'
 import ListCommands from 'components/bots/list-commands'
+import ListRoles from 'components/bots/list-roles'
 
 const BotViewer: React.FC = () => {
 	const { t } = useTranslation()
@@ -36,8 +37,13 @@ const BotViewer: React.FC = () => {
 				</GridItem>
 
 				<GridItem colSpan={{ base: 10, md: 5, '2xl': 4 }}>
-					<ListCommands />
+					<Stack>
+						<ListCommands />
+						<ListRoles />
+					</Stack>
 				</GridItem>
+
+				<GridItem colSpan={{ base: 10, md: 5, '2xl': 4 }}></GridItem>
 			</SimpleGrid>
 		</Stack>
 	)
