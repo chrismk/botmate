@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.19](https://github.com/botmate/botmate/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2021-09-23)
+
+
+### Bug Fixes
+
+* core improvements ([d62b5d0](https://github.com/botmate/botmate/commit/d62b5d0468d0b26d6cd2b5d7995370bc2ddd531b))
+* module update fix ([30a9465](https://github.com/botmate/botmate/commit/30a9465f9aad884a55c4ada010a8d992cc928c0e))
+* text overflow in command action ([1ddd085](https://github.com/botmate/botmate/commit/1ddd085e6ca62e4e0b90ebe82fe67d5ae72cc3a4))
+
+
+### Features
+
+* add bmid command to get message data ([c0ae931](https://github.com/botmate/botmate/commit/c0ae93152763f0d4d6a31e4b8417856c807d3776))
+* add sticker and photo support ([24159c3](https://github.com/botmate/botmate/commit/24159c3606a0781aa6a1d69a40db3896649414ce))
+* notify chat about new release ([201e605](https://github.com/botmate/botmate/commit/201e6059020d1cd8596834f282c60fae96de2a10))
+* restart bot after every command update ([0569fa6](https://github.com/botmate/botmate/commit/0569fa650f4cc15b78d27d51e84aa28fcb9d5ba4))
+
+
+
+
+
 # [1.0.0-beta.18](https://github.com/botmate/botmate/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2021-09-23)
 
 **Note:** Version bump only for package root
