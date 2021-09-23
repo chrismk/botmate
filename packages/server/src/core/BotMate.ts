@@ -51,29 +51,32 @@ class BotMate extends Handler {
 		userBots.map(async (botData) => {
 			try {
 				const bot = new TelegramBot<BMContext>(botData.token)
-
-				bot.use(
-					session({
-						initial(): SessionData {
-							return { config: {} }
-						},
-					})
-				)
-
-				await bot.init()
-
-				this.loadedBots[bot.botInfo.id] = {
-					status: false,
-					bot: bot,
-					start: () => this.start(bot),
-				}
-
-				if (botData && botData.status === 1) this.start(bot)
-				logger.info(`starting ${bot.botInfo.id}`)
+				this.createBotInstance(bot, botData.status || 0)
 			} catch (err: any) {
 				logger.error(err)
 			}
 		})
+	}
+
+	async createBotInstance(bot: TelegramBot<BMContext>, status: number) {
+		bot.use(
+			session({
+				initial(): SessionData {
+					return { config: {} }
+				},
+			})
+		)
+
+		await bot.init()
+
+		this.loadedBots[bot.botInfo.id] = {
+			status: false,
+			bot: bot,
+			start: () => this.start(bot),
+		}
+
+		if (status === 1) this.start(bot)
+		logger.info(`starting ${bot.botInfo.id}`)
 	}
 
 	async findBotModule(botId: number) {
@@ -87,13 +90,20 @@ class BotMate extends Handler {
 	}
 
 	async clientStart(botId: number) {
-		await Bot.update({ id: botId }, { status: 1 })
-		this.loadedBots[botId].start()
+		const botData = await Bot.findOne({ where: { id: botId } })
+		if (botData) {
+			const bot = new TelegramBot<BMContext>(botData.token)
+			this.createBotInstance(bot, 1)
+		}
+
 		return
 	}
 	async clientStop(botId: number) {
-		await this.loadedBots[botId].bot.stop()
-		await Bot.update({ id: botId }, { status: 0 })
+		if (this.loadedBots[botId]) {
+			await this.loadedBots[botId].bot.stop()
+			await Bot.update({ id: botId }, { status: 0 })
+			delete this.loadedBots[botId]
+		}
 		return
 	}
 }
