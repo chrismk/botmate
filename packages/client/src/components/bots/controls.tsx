@@ -10,16 +10,21 @@ import { useState } from 'react'
 const BotControl: React.FC = () => {
 	const { t } = useTranslation()
 	const { state: bot } = useLocation<Bot>()
+	const [loading, setLoading] = useState(false)
 	const [status, setStatus] = useState(bot.status)
 
 	const Start = async () => {
+		setLoading(true)
 		await realsync.service('bot/start', [bot.id])
 		setStatus(1)
+		setLoading(false)
 	}
 
 	const Stop = async () => {
+		setLoading(true)
 		await realsync.service('bot/stop', [bot.id])
 		setStatus(0)
+		setLoading(false)
 	}
 
 	return (
@@ -31,6 +36,7 @@ const BotControl: React.FC = () => {
 				color='orange'
 				extras={
 					<Button
+						isLoading={loading}
 						onClick={status ? Stop : Start}
 						colorScheme={status ? 'red' : 'brand'}
 					>
