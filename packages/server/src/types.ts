@@ -11,10 +11,8 @@ export type BMModuleHandler = (
 	bot: Bot<BMContext>
 ) => void
 
-type Scope = 'all' | 'private' | 'group'
-
 export interface BMModuleParams {
-	scope?: Scope[]
+	scope?: 'all' | 'private' | 'group'
 	role?: string
 }
 

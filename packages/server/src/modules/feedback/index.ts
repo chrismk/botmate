@@ -48,7 +48,7 @@ const module: BMModule = {
 		})
 	},
 	params: {
-		scope: ['private'],
+		scope: 'private',
 	},
 }
 

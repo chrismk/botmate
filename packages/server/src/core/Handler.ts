@@ -59,15 +59,17 @@ class Handler {
 			ctx.session.config = _module?.config
 
 			const { params } = module
-			const scope = params?.scope || ['all']
+			const scope = params?.scope || 'all'
 
-			if (!scope.includes('all')) {
-				if (ctx.chat.id === ctx.from.id) {
-					if (!scope.includes('private')) {
+			if (scope !== 'all') {
+				if (scope == 'group') {
+					if (ctx.chat.id === ctx.from.id) {
 						return
 					}
-				} else {
-					if (!scope.includes('group')) {
+				}
+
+				if (scope == 'private') {
+					if (ctx.chat.id !== ctx.from.id) {
 						return
 					}
 				}
