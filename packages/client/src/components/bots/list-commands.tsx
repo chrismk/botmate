@@ -60,9 +60,9 @@ const ListCommands: React.FC = () => {
 		>
 			{commands?.map((command, idx) => {
 				return (
-					<>
+					<Box key={idx}>
 						<Divider />
-						<Flex key={idx}>
+						<Flex>
 							<Box>
 								<Text>{command.name || 'No name ' + idx}</Text>
 								<Tag size='sm'>{command.actions.data.length} actions</Tag>
@@ -96,7 +96,7 @@ const ListCommands: React.FC = () => {
 								/>
 							</ButtonGroup>
 						</Flex>
-					</>
+					</Box>
 				)
 			})}
 		</UICard>
