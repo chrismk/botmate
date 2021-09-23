@@ -18,6 +18,7 @@ import Modules from './views/modules'
 import ModuleEditor from './views/bots/module-editor'
 import NewCommand from './views/bots/new-command'
 import { EditCommand } from './views/bots/edit-command'
+import Ideas from './views/ideas'
 
 interface IViews {
 	id: string
@@ -40,6 +41,11 @@ let Views: IViews[] = [
 		id: 'bots',
 		path: '/bots',
 		view: Bots,
+	},
+	{
+		id: 'suggestions',
+		path: '/suggestions',
+		view: Ideas,
 	},
 	{
 		id: 'bot-edit',

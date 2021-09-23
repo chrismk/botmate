@@ -50,4 +50,14 @@ const saveConfig = async (
 	}
 }
 
-export { installModule, saveConfig, removeModule }
+const toggleModule = async (client: Client, params: any) => {
+	const { moduleId, botId } = params
+	const module = await Module.findOne({ where: { botId, moduleId } })
+	if (!module) return
+
+	const { active } = module
+	await Module.update({ moduleId, botId }, { active: !active })
+	return
+}
+
+export { installModule, saveConfig, removeModule, toggleModule }

@@ -51,18 +51,25 @@ class Handler {
 			const _module = await Module.findOne({
 				where: { botId: bot.botInfo.id, moduleId },
 			})
+
+			if (!_module?.active) {
+				return
+			}
+
 			ctx.session.config = _module?.config
 
 			const { params } = module
-			const scope = params?.scope || ['all']
+			const scope = params?.scope || 'all'
 
-			if (!scope.includes('all')) {
-				if (ctx.chat.id === ctx.from.id) {
-					if (!scope.includes('private')) {
+			if (scope !== 'all') {
+				if (scope == 'group') {
+					if (ctx.chat.id === ctx.from.id) {
 						return
 					}
-				} else {
-					if (!scope.includes('group')) {
+				}
+
+				if (scope == 'private') {
+					if (ctx.chat.id !== ctx.from.id) {
 						return
 					}
 				}
@@ -85,6 +92,12 @@ class Handler {
 			)
 		})
 
+		const commands = await Command.find({ where: { bot: bot.botInfo.id } })
+
+		commands.map((command: any) => {
+			new CommandHandler(bot, command)
+		})
+
 		if (this.loadedBots[botInfo.id]) {
 			if (this.loadedBots[botInfo.id].status) {
 				return { error: 'already running' }
@@ -100,12 +113,6 @@ class Handler {
 			// attach modules to telegram bot
 			this.loadModule(bot, module.module, module.meta.id)
 			this.loadedModules[botInfo.id].push(module.meta)
-		})
-
-		const commands = await Command.find({ where: { bot: bot.botInfo.id } })
-
-		commands.map((command: any) => {
-			new CommandHandler(bot, command)
 		})
 
 		this.loadedBots[botInfo.id].status = true

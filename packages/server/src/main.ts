@@ -10,7 +10,12 @@ import modules from './modules'
 // services import
 import { common } from './services/common'
 import { allBot, newBot } from './services/bot'
-import { installModule, removeModule, saveConfig } from './services/module'
+import {
+	installModule,
+	removeModule,
+	saveConfig,
+	toggleModule,
+} from './services/module'
 import {
 	createCommand,
 	deleteCommand,
@@ -34,6 +39,7 @@ realsync.register('module/active', (client, botId: number) =>
 realsync.register('module/install', installModule)
 realsync.register('module/remove', removeModule)
 realsync.register('module/all', () => modules)
+realsync.register('module/toggle', toggleModule)
 realsync.register('module/save-config', saveConfig)
 
 realsync.register('command/create', createCommand)

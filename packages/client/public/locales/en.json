@@ -4,6 +4,7 @@
 		"modules": "Modules",
 		"bots": "Bots",
 		"submit": "Submit",
+		"suggestions": "Suggestion",
 		"settings": "Settings",
 		"success": "Success",
 		"language": "Language",
@@ -25,6 +26,7 @@
 		"buttonUrl": "Button URL",
 		"buttonText": "Button Text",
 		"disable": "Disable",
+		"enable": "Enable",
 		"start": "Start",
 		"stop": "Stop",
 		"add": "Add"

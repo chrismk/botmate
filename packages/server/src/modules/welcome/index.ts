@@ -19,7 +19,7 @@ const module: BMModule = {
 		})
 	},
 	params: {
-		scope: ['group'],
+		scope: 'group',
 	},
 }
 

@@ -1,9 +1,17 @@
-import { BMContext, BMModule, BMModuleMeta } from '../../types'
+import { BMModule, BMModuleMeta } from '../../types'
 
 const module: BMModule = {
 	handler: (composer, bot) => {
-		composer.on('message', async (ctx: BMContext) => {
+		composer.on('message', async (ctx, next) => {
 			const { config } = ctx.session
+			const message = ctx.message?.text
+
+			if (message) {
+				if (message.startsWith('/')) {
+					next()
+					return
+				}
+			}
 
 			const isAdmin = ctx.from?.id === Number(config.adminId)
 
@@ -40,7 +48,7 @@ const module: BMModule = {
 		})
 	},
 	params: {
-		scope: ['private'],
+		scope: 'private',
 	},
 }
 

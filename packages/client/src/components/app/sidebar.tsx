@@ -2,7 +2,14 @@ import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
-import { HiHome, HiChat, HiCog, HiUsers, HiCube } from 'react-icons/hi'
+import {
+	HiHome,
+	HiChat,
+	HiCog,
+	HiUsers,
+	HiCube,
+	HiLightBulb,
+} from 'react-icons/hi'
 import { IconType } from 'react-icons/lib'
 import { useRecoilState } from 'recoil'
 import { commonAtom } from 'atom'
@@ -81,6 +88,10 @@ const AppSidebar: React.FC<Props> = ({ active }) => {
 		modules: {
 			name: t('common.modules'),
 			icon: <HiCube />,
+		},
+		suggestions: {
+			name: t('common.suggestions'),
+			icon: <HiLightBulb />,
 		},
 		settings: {
 			name: t('common.settings'),

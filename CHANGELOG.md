@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.20](https://github.com/botmate/botmate/compare/v1.0.0-beta.19...v1.0.0-beta.20) (2021-09-23)
+
+
+### Bug Fixes
+
+* change TELEGRAM_TOKEN -> BOT_TOKEN ([8f5e19b](https://github.com/botmate/botmate/commit/8f5e19b1b375bec9dbd2cd4cebee4df22592145a))
+* **command:** higher priority than modules ([7f6621f](https://github.com/botmate/botmate/commit/7f6621f0e66389182b3188048ca2228d553fbbb1))
+* **feedback:** check for command ([fd627f7](https://github.com/botmate/botmate/commit/fd627f7099ccb184cc43644e473adbfb9380faf4))
+* **module:** improved scope ([d15c93f](https://github.com/botmate/botmate/commit/d15c93fe7bc95475c8cd6ce7b5281c8ffebfb65c))
+
+
+### Features
+
+* add disable option to module ([22967c6](https://github.com/botmate/botmate/commit/22967c656313c1710d3889d71d14c3d95639104e))
+* add suggestion in sidebar ([acd451a](https://github.com/botmate/botmate/commit/acd451a3e5fd64fb9b48a9700e645cf41cf6294a))
+* display total actions in command list ([a0e77f5](https://github.com/botmate/botmate/commit/a0e77f527f14c912590b2993cde85fc30b6f4058))
+
+
+
+
+
 # [1.0.0-beta.19](https://github.com/botmate/botmate/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2021-09-23)
 
 

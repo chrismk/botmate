@@ -17,6 +17,9 @@ function dist(cb) {
 	gulp
 		.src('packages/client/build/**')
 		.pipe(gulp.dest('packages/server/dist/bm-client'))
+
+	gulp.src('README.md').pipe(gulp.dest('packages/server/dist/'))
+
 	cb()
 }
 
