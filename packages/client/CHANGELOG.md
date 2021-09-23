@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-beta.19](https://github.com/botmate/botmate/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2021-09-23)
+
+
+### Bug Fixes
+
+* text overflow in command action ([1ddd085](https://github.com/botmate/botmate/commit/1ddd085e6ca62e4e0b90ebe82fe67d5ae72cc3a4))
+
+
+### Features
+
+* add bmid command to get message data ([c0ae931](https://github.com/botmate/botmate/commit/c0ae93152763f0d4d6a31e4b8417856c807d3776))
+* restart bot after every command update ([0569fa6](https://github.com/botmate/botmate/commit/0569fa650f4cc15b78d27d51e84aa28fcb9d5ba4))
+
+
+
+
+
+# [1.0.0-beta.18](https://github.com/botmate/botmate/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2021-09-23)
+
+**Note:** Version bump only for package botmate-client
+
+
+
+
+
 # [1.0.0-beta.17](https://github.com/botmate/botmate/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2021-09-23)
 
 

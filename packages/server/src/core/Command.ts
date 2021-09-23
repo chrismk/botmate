@@ -42,10 +42,18 @@ class CommandHandler {
 
 	async performAction(ctx: BMContext, action: CommandAction) {
 		const { type, text } = action
+
 		switch (type) {
 			case 'text':
 				ctx.reply(text)
 				break
+			case 'sticker':
+				ctx.replyWithSticker(text)
+				break
+			case 'photo':
+				ctx.replyWithPhoto(text, {
+					reply_to_message_id: ctx.message?.message_id,
+				})
 		}
 	}
 }

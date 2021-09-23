@@ -75,7 +75,7 @@ const EditCommand: React.FC<EditCommandProps> = () => {
 
 			<ButtonGroup size='sm' mt={4}>
 				<Button
-					// isLoading={loading}
+					isLoading={loading}
 					onClick={async () => {
 						setLoading(true)
 						await realsync.service('command/update', {
@@ -83,6 +83,7 @@ const EditCommand: React.FC<EditCommandProps> = () => {
 							id: prevCommand.id,
 							bot: prevCommand.bot,
 						})
+						await realsync.service('bot/restart', [prevCommand.bot])
 						setLoading(false)
 					}}
 				>

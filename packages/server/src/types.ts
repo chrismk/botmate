@@ -45,7 +45,7 @@ export interface LoadedBots {
 }
 
 export type CommandAction = {
-	type: 'text'
+	type: 'text' | 'sticker' | 'photo'
 	text: string
 }
 export type CommandCondition = {
