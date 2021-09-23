@@ -12,7 +12,7 @@ import { Spinner } from '@chakra-ui/spinner'
 
 const ListModules: React.FC = () => {
 	const { t } = useTranslation()
-	const [loading, setLoading] = useState(true)
+	const [loading, setLoading] = useState({ modules: true, toggle: false })
 	const { state: bot, pathname } = useLocation<Bot>()
 	const [installedModules, setInstallModules] = useState<InstalledModule[]>([])
 	const [modules] = useRecoilState(modulesAtom)
@@ -20,7 +20,7 @@ const ListModules: React.FC = () => {
 	const Fetch = async () => {
 		const data = await realsync.service('module/active', bot.id)
 		setInstallModules(data as InstalledModule[])
-		setLoading(false)
+		setLoading({ ...loading, modules: false, toggle: false })
 	}
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const ListModules: React.FC = () => {
 		return <Redirect to='/home' />
 	}
 
-	if (loading) {
+	if (loading.modules) {
 		return (
 			<Center>
 				<Spinner />
@@ -40,12 +40,18 @@ const ListModules: React.FC = () => {
 		)
 	}
 
-	if (!loading && installedModules.length == 0) {
+	if (!loading.modules && installedModules.length == 0) {
 		return (
 			<Center>
 				<Text>No modules found</Text>
 			</Center>
 		)
+	}
+
+	const ToggleModule = async (moduleId: string, botId: number) => {
+		setLoading({ ...loading, toggle: true })
+		await realsync.service('module/toggle', { moduleId, botId })
+		Fetch()
 	}
 
 	return (
@@ -75,6 +81,14 @@ const ListModules: React.FC = () => {
 								>
 									<Button>{t('common.configure')}</Button>
 								</Link>
+								<Button
+									isLoading={loading.toggle}
+									variant='outline'
+									colorScheme={module.active ? 'orange' : 'green'}
+									onClick={() => ToggleModule(module.moduleId, module.botId)}
+								>
+									{t(module.active ? 'common.disable' : 'common.enable')}
+								</Button>
 							</ButtonGroup>
 						</UICard>
 					</GridItem>

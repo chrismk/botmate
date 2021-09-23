@@ -15,11 +15,6 @@ const logger = createLogger({
 			level: 'error',
 			format: format.combine(format.simple(), format.timestamp(), logFormatter),
 		}),
-		new transports.File({
-			filename: 'logs/botmate.log',
-			level: 'debug',
-			format: format.combine(format.simple(), format.timestamp(), logFormatter),
-		}),
 	],
 })
 

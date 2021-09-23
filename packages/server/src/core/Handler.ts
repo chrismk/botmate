@@ -51,6 +51,11 @@ class Handler {
 			const _module = await Module.findOne({
 				where: { botId: bot.botInfo.id, moduleId },
 			})
+
+			if (!_module?.active) {
+				return
+			}
+
 			ctx.session.config = _module?.config
 
 			const { params } = module

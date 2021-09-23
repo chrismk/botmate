@@ -40,6 +40,7 @@ export interface InstalledModule {
 	id: number
 	config: any
 	moduleId: string
+	botId: number
 }
 
 export const installedModulesAtom = atom({

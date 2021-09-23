@@ -111,4 +111,8 @@ class BotMate extends Handler {
 	}
 }
 
+process.on('unhandledRejection', (reason: any) => {
+	logger.error(reason.toString())
+})
+
 export default new BotMate()
