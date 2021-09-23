@@ -90,6 +90,12 @@ class Handler {
 			)
 		})
 
+		const commands = await Command.find({ where: { bot: bot.botInfo.id } })
+
+		commands.map((command: any) => {
+			new CommandHandler(bot, command)
+		})
+
 		if (this.loadedBots[botInfo.id]) {
 			if (this.loadedBots[botInfo.id].status) {
 				return { error: 'already running' }
@@ -105,12 +111,6 @@ class Handler {
 			// attach modules to telegram bot
 			this.loadModule(bot, module.module, module.meta.id)
 			this.loadedModules[botInfo.id].push(module.meta)
-		})
-
-		const commands = await Command.find({ where: { bot: bot.botInfo.id } })
-
-		commands.map((command: any) => {
-			new CommandHandler(bot, command)
 		})
 
 		this.loadedBots[botInfo.id].status = true
